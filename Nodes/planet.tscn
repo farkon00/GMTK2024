@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsbnxtfkejl3e"]
+
+[ext_resource type="Script" path="res://Scripts/Planet.gd" id="1_w87ub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
+size = Vector2(39.6148, 40.0182)
+
+[node name="Planet" type="StaticBody2D"]
+position = Vector2(607, 108)
+scale = Vector2(4.5, 4.5)
+script = ExtResource("1_w87ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.091074, 0.0273132)
+shape = SubResource("RectangleShape2D_3hqci")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.3097
+offset_top = -20.4007
+offset_right = 19.6903
+offset_bottom = 19.5993

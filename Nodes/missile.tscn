@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnpp55edycqp"]
+
+[ext_resource type="Script" path="res://Scripts/Missile.gd" id="1_uto2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
+size = Vector2(39.3333, 40)
+
+[node name="Missile" type="StaticBody2D"]
+position = Vector2(500.75, 500)
+scale = Vector2(2, 1)
+script = ExtResource("1_uto2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.125, 0)
+shape = SubResource("RectangleShape2D_3hqci")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -19.875
+offset_top = -20.0
+offset_right = 20.125
+offset_bottom = 20.0

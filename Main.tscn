@@ -1,3 +1,56 @@
-[gd_scene format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=4 format=3 uid="uid://60x0tpw1kfl1"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
+[ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_c4yi3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
+size = Vector2(39.6148, 40.0182)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Player" type="StaticBody2D" parent="."]
+position = Vector2(117, 149)
+scale = Vector2(3.5, 3.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.091074, 0.0273132)
+shape = SubResource("RectangleShape2D_3hqci")
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+offset_left = -20.3097
+offset_top = -20.4007
+offset_right = 19.6903
+offset_bottom = 19.5993
+
+[node name="EnemyShip" type="StaticBody2D" parent="."]
+position = Vector2(900, 314)
+scale = Vector2(3.7, 3.7)
+script = ExtResource("1_yvwe1")
+missile_launch_chance_second = 0.6
+initial_missile_timeout = 0.5
+missile_cooldown = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
+position = Vector2(0.091074, 0.0273132)
+shape = SubResource("RectangleShape2D_3hqci")
+
+[node name="ColorRect" type="ColorRect" parent="EnemyShip"]
+offset_left = -20.3097
+offset_top = -20.4007
+offset_right = 19.6903
+offset_bottom = 19.5993
+
+[node name="Planets" type="Node" parent="."]
+
+[node name="Planet" parent="Planets" instance=ExtResource("2_c4yi3")]
+mass = 400.0
+
+[node name="Planet2" parent="Planets" instance=ExtResource("2_c4yi3")]
+position = Vector2(121, 522)
+scale = Vector2(9, 9)
+mass = 1600.0
+
+[node name="Planet3" parent="Planets" instance=ExtResource("2_c4yi3")]
+position = Vector2(550, 592)
+scale = Vector2(3.18, 3.18)
+mass = 500.0

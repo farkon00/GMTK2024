@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://b0ob3661w0wk"]
+
+[ext_resource type="Texture2D" uid="uid://bx41kynxb7ieo" path="res://Textures/Missile/Missile1.png" id="1_yktn5"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yktn5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

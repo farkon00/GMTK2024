@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr46vnui5f64e"]
+
+[ext_resource type="Script" path="res://Scripts/TimedNode.gd" id="1_hiemm"]
+
+[sub_resource type="Curve" id="Curve_pm78q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.72334, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_prbah"]
+curve = SubResource("Curve_pm78q")
+
+[sub_resource type="Gradient" id="Gradient_jv0sn"]
+colors = PackedColorArray(0.908071, 0.461781, 0, 1, 1, 0.121569, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yqj00"]
+gradient = SubResource("Gradient_jv0sn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yg2tg"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+direction = Vector3(-10, 0, 0)
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+scale_min = 6.0
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_yqj00")
+alpha_curve = SubResource("CurveTexture_prbah")
+hue_variation_min = -0.06
+hue_variation_max = 0.08
+
+[node name="ExplosionParticles" type="GPUParticles2D"]
+emitting = true
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_yg2tg")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 0.55
+script = ExtResource("1_hiemm")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

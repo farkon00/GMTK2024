@@ -1,5 +1,5 @@
 class_name EnemyShip
-extends StaticBody2D
+extends Ship
 
 @export var missile_launch_chance_second: float = 0.1
 @export var initial_missile_timeout: float = 5
@@ -17,6 +17,7 @@ func start_timeout(duration: float):
 
 
 func _ready():
+	super()
 	start_timeout(initial_missile_timeout)
 
 func launch_missile():
@@ -31,4 +32,9 @@ func process_missile_launching(delta: float):
 		launch_missile()
 
 func _process(delta: float):
+	if GameManager.instance.is_gameover: return
 	process_missile_launching(delta)
+
+func _on_area_2d_body_exited(body):
+	if body is Missile:
+		body.is_in_launch = false

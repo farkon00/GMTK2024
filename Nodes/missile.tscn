@@ -1,10 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnpp55edycqp"]
+[gd_scene load_steps=9 format=3 uid="uid://cnpp55edycqp"]
 
 [ext_resource type="Script" path="res://Scripts/Missile.gd" id="1_uto2i"]
 [ext_resource type="SpriteFrames" uid="uid://b0ob3661w0wk" path="res://Textures/Missile/missile_frames.tres" id="2_yaoex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
 size = Vector2(38.5416, 16)
+
+[sub_resource type="Curve" id="Curve_pm78q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.72334, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_prbah"]
+curve = SubResource("Curve_pm78q")
+
+[sub_resource type="Gradient" id="Gradient_jv0sn"]
+colors = PackedColorArray(0.908071, 0.461781, 0, 1, 1, 0.121569, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yqj00"]
+gradient = SubResource("Gradient_jv0sn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yg2tg"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 5, 1)
+direction = Vector3(-10, 0, 0)
+spread = 30.0
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_yqj00")
+alpha_curve = SubResource("CurveTexture_prbah")
+hue_variation_min = -0.06
+hue_variation_max = 0.08
 
 [node name="Missile" type="CharacterBody2D"]
 position = Vector2(500.75, 500)
@@ -17,6 +46,15 @@ position = Vector2(0.520813, 0)
 shape = SubResource("RectangleShape2D_3hqci")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 texture_filter = 3
 rotation = 1.5708
 sprite_frames = ExtResource("2_yaoex")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-22.7143, 0.571429)
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_yg2tg")
+lifetime = 0.2
+explosiveness = 0.06
+randomness = 0.55

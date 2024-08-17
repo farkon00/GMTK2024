@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=8 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
 [ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_c4yi3"]
+[ext_resource type="SpriteFrames" uid="uid://c61jd7iam04n3" path="res://Textures/Player/player_frames.tres" id="2_h6t5m"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
@@ -15,18 +16,11 @@ font_size = 90
 
 [node name="Player" type="StaticBody2D" parent="."]
 position = Vector2(117, 149)
-scale = Vector2(3.5, 3.5)
 script = ExtResource("1_dvysg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0.0910721, 0.0273132)
 shape = SubResource("RectangleShape2D_3hqci")
-
-[node name="ColorRect" type="ColorRect" parent="Player"]
-offset_left = -20.3097
-offset_top = -20.4007
-offset_right = 19.6903
-offset_bottom = 19.5993
 
 [node name="Area2D" type="Area2D" parent="Player"]
 
@@ -48,13 +42,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -51.7143
-offset_bottom = -1.71429
+offset_left = 2.0
+offset_top = -74.0
+offset_right = 42.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 0.232797)
+scale = Vector2(1.24, 0.352797)
 alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = ExtResource("2_h6t5m")
 
 [node name="EnemyShip" type="StaticBody2D" parent="."]
 position = Vector2(900, 314)

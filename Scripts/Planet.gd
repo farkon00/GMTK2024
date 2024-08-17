@@ -12,7 +12,6 @@ func get_force_vector(pos: Vector2):
 
 func _process(delta):
 	if $"CollisionShape2D".shape.get_rect().has_point(get_local_mouse_position()):
-		print("HAS")
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			laser_state = 1
 		elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):

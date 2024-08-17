@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=5 format=3 uid="uid://60x0tpw1kfl1"]
 
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
 [ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_c4yi3"]
 
@@ -11,9 +12,11 @@ size = Vector2(39.6148, 40.0182)
 [node name="Player" type="StaticBody2D" parent="."]
 position = Vector2(117, 149)
 scale = Vector2(3.5, 3.5)
+script = ExtResource("1_dvysg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0.091074, 0.0273132)
+position = Vector2(0.0910721, 0.0273132)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3hqci")
 
 [node name="ColorRect" type="ColorRect" parent="Player"]
@@ -21,6 +24,35 @@ offset_left = -20.3097
 offset_top = -20.4007
 offset_right = 19.6903
 offset_bottom = 19.5993
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0.0910721, 0.0273132)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3hqci")
+
+[node name="Hearts" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_right = 20.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/Hearts"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -51.7143
+offset_bottom = -1.71429
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.232797)
+alignment = 1
 
 [node name="EnemyShip" type="StaticBody2D" parent="."]
 position = Vector2(900, 314)
@@ -39,6 +71,7 @@ offset_left = -20.3097
 offset_top = -20.4007
 offset_right = 19.6903
 offset_bottom = 19.5993
+metadata/_edit_use_anchors_ = true
 
 [node name="Planets" type="Node" parent="."]
 
@@ -47,10 +80,10 @@ mass = 400.0
 
 [node name="Planet2" parent="Planets" instance=ExtResource("2_c4yi3")]
 position = Vector2(121, 522)
-scale = Vector2(9, 9)
 mass = 1600.0
 
 [node name="Planet3" parent="Planets" instance=ExtResource("2_c4yi3")]
 position = Vector2(550, 592)
-scale = Vector2(3.18, 3.18)
 mass = 500.0
+
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]

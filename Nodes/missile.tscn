@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
 size = Vector2(38.5416, 16)
 
-[node name="Missile" type="StaticBody2D"]
+[node name="Missile" type="CharacterBody2D"]
 position = Vector2(500.75, 500)
 scale = Vector2(1.75, 1.75)
+motion_mode = 1
 script = ExtResource("1_uto2i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

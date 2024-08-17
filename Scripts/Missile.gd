@@ -1,5 +1,5 @@
 class_name Missile
-extends StaticBody2D
+extends CharacterBody2D
 
 @export var movement_speed: float = 100 
 

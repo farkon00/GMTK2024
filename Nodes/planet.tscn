@@ -7,7 +7,6 @@ size = Vector2(39.6148, 40.0182)
 
 [node name="Planet" type="StaticBody2D"]
 position = Vector2(607, 108)
-scale = Vector2(4.5, 4.5)
 script = ExtResource("1_w87ub")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

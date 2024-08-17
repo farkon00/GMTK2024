@@ -1,9 +1,11 @@
 class_name Planet
-extends StaticBody2D
+extends SpaceBody
 
 static var G = 4000
 @export var density: float = 80
 @export var mass: float = 300
+@export var mass_min: float = 50
+@export var mass_max: float = 3000
 @export var laser_speed: float = 300
 var laser_state: int = 0
 
@@ -22,5 +24,6 @@ func _process(delta):
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) && laser_state == -1:
 		laser_state = 0
 	mass += laser_speed * delta * laser_state
+	mass = min(max(mass, mass_min), mass_max)
 	
 	scale = Vector2(1, 1) * sqrt(mass / density)

@@ -1,5 +1,5 @@
 class_name Ship
-extends StaticBody2D
+extends SpaceBody
 
 @export var initial_hearts_count = 3
 
@@ -16,11 +16,9 @@ func _ready():
 func die():
 	queue_free()
 
-func _on_area_2d_body_entered(body):
-	if body is Missile && !body.is_in_launch && !hearts.is_empty():
-		body.explode()
-		body.free()
-		hearts.back().free()
-		hearts.pop_back()
-		if hearts.is_empty():
-			die()
+func damage():
+	super()
+	hearts.back().free()
+	hearts.pop_back()
+	if hearts.is_empty():
+		die()

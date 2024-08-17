@@ -15,7 +15,7 @@ font_size = 90
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="StaticBody2D" parent="."]
-position = Vector2(117, 149)
+position = Vector2(50, 153)
 script = ExtResource("1_dvysg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -104,11 +104,12 @@ shape = SubResource("RectangleShape2D_3hqci")
 [node name="Planets" type="Node" parent="."]
 
 [node name="Planet" parent="Planets" instance=ExtResource("2_c4yi3")]
+position = Vector2(499, 302)
 mass = 400.0
 laser_speed = 700.0
 
 [node name="Planet2" parent="Planets" instance=ExtResource("2_c4yi3")]
-position = Vector2(121, 522)
+position = Vector2(678, 111)
 mass = 1600.0
 laser_speed = 700.0
 

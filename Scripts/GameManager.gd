@@ -14,10 +14,13 @@ var has_won: bool = false
 func _init():
 	instance = self
 
-func _ready():
+func initialize_level():
 	for child in $"../Level/EnemyShips".get_children():
 		if child is EnemyShip:
 			enemy_ships.append(child)
+
+func _ready():
+	initialize_level()
 
 func gameover():
 	is_game_stopped = true
@@ -68,3 +71,4 @@ func _process(delta):
 			is_game_stopped = false
 			$"YouWinUI".set_process(false)
 			$"YouWinUI".visible = false
+			initialize_level()

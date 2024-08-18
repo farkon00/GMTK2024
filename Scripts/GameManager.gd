@@ -1,21 +1,26 @@
 class_name GameManager
 extends Node
 
+@export var levels: Array[PackedScene] = []
+
 static var instance: GameManager
+
 var is_game_stopped: bool = false
 var currently_changing: Planet = null
 var enemy_ships: Array[EnemyShip] = []
-var time_since_win: float = 0
-var iswin: bool = false
-@export var levels: Array[PackedScene] = []
+var time_since_victory: float = 0
+var has_won: bool = false
 
 func _init():
 	instance = self
 
-func _ready():
+func initialize_level():
 	for child in $"../Level/EnemyShips".get_children():
 		if child is EnemyShip:
 			enemy_ships.append(child)
+
+func _ready():
+	initialize_level()
 
 func gameover():
 	is_game_stopped = true
@@ -43,15 +48,15 @@ func _input(event):
 
 func win():
 	is_game_stopped = true
+	has_won = true
 	$"YouWinUI".set_process(true)
 	$"YouWinUI".visible = true
-	iswin = true
 
 func _process(delta):
-	if iswin:
-		time_since_win += delta
-	if time_since_win >= 5:
-		time_since_win = 0
+	if has_won:
+		time_since_victory += delta
+	if time_since_victory >= 5:
+		time_since_victory = 0
 		var current_level = $"../Level"
 		if current_level == null:
 			return
@@ -66,3 +71,4 @@ func _process(delta):
 			is_game_stopped = false
 			$"YouWinUI".set_process(false)
 			$"YouWinUI".visible = false
+			initialize_level()

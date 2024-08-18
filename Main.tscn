@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=12 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
@@ -6,15 +6,16 @@
 [ext_resource type="SpriteFrames" uid="uid://c61jd7iam04n3" path="res://Textures/Player/player_frames.tres" id="2_h6t5m"]
 [ext_resource type="Texture2D" uid="uid://d4b44hojwum0e" path="res://Textures/Laser/laser_red.png" id="3_alwoh"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
+[ext_resource type="SpriteFrames" uid="uid://qye1wuwg5k82" path="res://Textures/EnemyShip/enemy_ship_frames.tres" id="5_lv5jn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
 size = Vector2(67.8985, 40.0182)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt07k"]
-size = Vector2(39.7297, 40)
+size = Vector2(96, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00k54"]
-size = Vector2(39.6148, 40.0182)
+size = Vector2(96, 31)
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6bjm"]
 font_size = 90
@@ -69,23 +70,21 @@ position = Vector2(30, -1)
 texture = ExtResource("3_alwoh")
 
 [node name="EnemyShip" type="StaticBody2D" parent="."]
+z_index = 4
 position = Vector2(900, 314)
-scale = Vector2(3.7, 3.7)
 script = ExtResource("1_yvwe1")
 missile_launch_chance_second = 0.6
 initial_missile_timeout = 0.5
 initial_hearts_count = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
-position = Vector2(-0.135132, 0)
+position = Vector2(4, 0.5)
 shape = SubResource("RectangleShape2D_vt07k")
 
-[node name="ColorRect" type="ColorRect" parent="EnemyShip"]
-offset_left = -20.3097
-offset_top = -20.4007
-offset_right = 19.6903
-offset_bottom = 19.5993
-metadata/_edit_use_anchors_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EnemyShip"]
+texture_filter = 3
+rotation = 1.5708
+sprite_frames = ExtResource("5_lv5jn")
 
 [node name="Hearts" type="Control" parent="EnemyShip"]
 layout_mode = 3
@@ -102,10 +101,10 @@ anchor_left = 0.501
 anchor_top = -0.375
 anchor_right = 0.501
 anchor_bottom = -0.375
-offset_left = -19.9949
-offset_top = -5.5
-offset_right = 20.0051
-offset_bottom = 5.5
+offset_left = -70.9949
+offset_top = -60.4459
+offset_right = 73.0051
+offset_bottom = -4.44589
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -113,7 +112,7 @@ alignment = 1
 [node name="Area2D" type="Area2D" parent="EnemyShip"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip/Area2D"]
-position = Vector2(0.0910797, 0.0273132)
+position = Vector2(4, 0.5)
 shape = SubResource("RectangleShape2D_00k54")
 
 [node name="Planets" type="Node" parent="."]

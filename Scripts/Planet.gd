@@ -13,7 +13,7 @@ func get_force_vector(pos: Vector2):
 	return G * mass / (position - pos).length_squared() * (position - pos).normalized()
 
 func _process(delta):
-	if GameManager.instance.is_gameover: return
+	if GameManager.instance.is_game_stopped: return
 	if $"CollisionShape2D".shape.get_rect().has_point(get_local_mouse_position()):
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			laser_state = 1

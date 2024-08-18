@@ -31,8 +31,14 @@ func process_missile_launching(delta: float):
 	if !is_timedout && randf() < delta * missile_launch_chance_second:
 		launch_missile()
 
+func die():
+	super()
+	GameManager.instance.enemy_ships.erase(self)
+	if GameManager.instance.enemy_ships.is_empty():
+		GameManager.instance.win()
+
 func _process(delta: float):
-	if GameManager.instance.is_gameover: return
+	if GameManager.instance.is_game_stopped: return
 	process_missile_launching(delta)
 
 func _on_area_2d_body_exited(body):

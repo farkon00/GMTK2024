@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://vcbhxpqj7mvw"]
+
+[ext_resource type="Theme" uid="uid://cvftj2ibeautp" path="res://Themes/LevelSelectScreen.tres" id="1_rtok5"]
+
+[node name="LevelSelectUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -274.0
+offset_right = 476.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_top = 50.0
+offset_right = 40.0
+offset_bottom = 90.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Control"]
+layout_mode = 2
+offset_right = 952.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Level1" type="Button" parent="Panel/Control/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("1_rtok5")
+text = "1"
+
+[node name="Level2" type="Button" parent="Panel/Control/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("1_rtok5")
+text = "2"
+
+[node name="Level3" type="Button" parent="Panel/Control/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("1_rtok5")
+text = "3"

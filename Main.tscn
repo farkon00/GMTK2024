@@ -71,7 +71,6 @@ missile_cooldown = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
 position = Vector2(-0.135132, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vt07k")
 
 [node name="ColorRect" type="ColorRect" parent="EnemyShip"]

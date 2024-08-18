@@ -26,4 +26,8 @@ func _process(delta):
 	pos_delta += gravity_velocity * delta
 	rotation = pos_delta.angle()
 	position += pos_delta
+	var viewport_rect = get_viewport_rect()
+	if position.x < 0 or position.y < 0 or position.x > viewport_rect.size.x or position.y > viewport_rect.size.y:
+		explode()
+		free()
 	

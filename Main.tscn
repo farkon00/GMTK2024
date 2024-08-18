@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=15 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
@@ -9,6 +9,7 @@
 [ext_resource type="SpriteFrames" uid="uid://qye1wuwg5k82" path="res://Textures/EnemyShip/enemy_ship_frames.tres" id="5_lv5jn"]
 [ext_resource type="Texture2D" uid="uid://uh1r8jktwble" path="res://Textures/Planets/Planet2.png" id="7_nefmo"]
 [ext_resource type="Texture2D" uid="uid://cq0kny86uh14m" path="res://Textures/Planets/Planet3.png" id="8_21u2d"]
+[ext_resource type="PackedScene" uid="uid://c8tds7dtmak5k" path="res://Nodes/portal.tscn" id="10_6noh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
 size = Vector2(67.8985, 40.0182)
@@ -77,7 +78,6 @@ position = Vector2(900, 314)
 script = ExtResource("1_yvwe1")
 missile_launch_chance_second = 0.6
 initial_missile_timeout = 0.5
-initial_hearts_count = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
 position = Vector2(4, 0.5)
@@ -207,6 +207,22 @@ label_settings = SubResource("LabelSettings_n6bjm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Portal" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("10_6noh0")]
+connects_to = NodePath("../Portal2")
+
+[node name="Portal2" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("10_6noh0")]
+position = Vector2(1055, 254)
+connects_to = NodePath("../Portal")
+
+[node name="CollisionShape2D" parent="Portal2/TeleportationArea" index="0"]
+position = Vector2(10, 60)
+
+[node name="Area2D" parent="Portal2" index="3"]
+process_priority = 1
+
+[node name="CollisionShape2D" parent="Portal2/Area2D" index="0"]
+position = Vector2(30, 60)
+
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="EnemyShip/Area2D" to="EnemyShip" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="EnemyShip/Area2D" to="EnemyShip" method="_on_area_2d_body_exited"]
@@ -214,3 +230,5 @@ vertical_alignment = 1
 [editable path="Planets/Planet"]
 [editable path="Planets/Planet2"]
 [editable path="Planets/Planet3"]
+[editable path="Portal"]
+[editable path="Portal2"]

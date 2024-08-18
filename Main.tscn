@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=10 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
@@ -7,12 +7,10 @@
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
-size = Vector2(39.6148, 40.0182)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fevb0"]
-size = Vector2(39.6148, 40.0182)
+size = Vector2(67.8985, 40.0182)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt07k"]
+size = Vector2(39.7297, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00k54"]
 size = Vector2(39.6148, 40.0182)
@@ -27,14 +25,14 @@ position = Vector2(50, 153)
 script = ExtResource("1_dvysg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0.0910721, 0.0273132)
+position = Vector2(-14.0508, 0.0273132)
 shape = SubResource("RectangleShape2D_3hqci")
 
 [node name="Area2D" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-position = Vector2(0.0910721, 0.0273132)
-shape = SubResource("RectangleShape2D_fevb0")
+position = Vector2(-14.0508, 0.0273132)
+shape = SubResource("RectangleShape2D_3hqci")
 
 [node name="Hearts" type="Control" parent="Player"]
 layout_mode = 3
@@ -72,7 +70,8 @@ initial_missile_timeout = 0.5
 missile_cooldown = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
-position = Vector2(0.0910797, 0.0273209)
+position = Vector2(-0.135132, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vt07k")
 
 [node name="ColorRect" type="ColorRect" parent="EnemyShip"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=14 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d4b44hojwum0e" path="res://Textures/Laser/laser_red.png" id="3_alwoh"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
 [ext_resource type="SpriteFrames" uid="uid://qye1wuwg5k82" path="res://Textures/EnemyShip/enemy_ship_frames.tres" id="5_lv5jn"]
+[ext_resource type="Texture2D" uid="uid://uh1r8jktwble" path="res://Textures/Planets/Planet2.png" id="7_nefmo"]
+[ext_resource type="Texture2D" uid="uid://cq0kny86uh14m" path="res://Textures/Planets/Planet3.png" id="8_21u2d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
 size = Vector2(67.8985, 40.0182)
@@ -122,6 +124,9 @@ position = Vector2(499, 302)
 mass = 400.0
 laser_speed = 700.0
 
+[node name="Sprite2D" parent="Planets/Planet" index="1"]
+texture = ExtResource("7_nefmo")
+
 [node name="Planet2" parent="Planets" instance=ExtResource("2_c4yi3")]
 position = Vector2(678, 111)
 mass = 1600.0
@@ -131,6 +136,9 @@ laser_speed = 700.0
 position = Vector2(550, 592)
 mass = 500.0
 laser_speed = 700.0
+
+[node name="Sprite2D" parent="Planets/Planet3" index="1"]
+texture = ExtResource("8_21u2d")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("4_0dhc0")
@@ -202,3 +210,7 @@ vertical_alignment = 1
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="EnemyShip/Area2D" to="EnemyShip" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="EnemyShip/Area2D" to="EnemyShip" method="_on_area_2d_body_exited"]
+
+[editable path="Planets/Planet"]
+[editable path="Planets/Planet2"]
+[editable path="Planets/Planet3"]

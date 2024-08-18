@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbagmxdk5mime"]
+
+[ext_resource type="PackedScene" uid="uid://c3y6cnuxa8eli" path="res://Nodes/player.tscn" id="1_1h0ng"]
+[ext_resource type="PackedScene" uid="uid://dfc3dbdyunhqd" path="res://Nodes/enemy_ship.tscn" id="2_vdhlw"]
+[ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="3_fph74"]
+
+[node name="Level" type="Node2D"]
+metadata/level_id = 1
+
+[node name="Player" parent="." instance=ExtResource("1_1h0ng")]
+position = Vector2(214, 359)
+
+[node name="Planets" type="Node" parent="."]
+
+[node name="Planet" parent="Planets" instance=ExtResource("3_fph74")]
+position = Vector2(508, 440)
+mass = 400.0
+laser_speed = 700.0
+
+[node name="Planet2" parent="Planets" instance=ExtResource("3_fph74")]
+position = Vector2(502, 91)
+mass = 1600.0
+laser_speed = 700.0
+
+[node name="Planet3" parent="Planets" instance=ExtResource("3_fph74")]
+position = Vector2(618, 609)
+mass = 500.0
+laser_speed = 700.0
+
+[node name="Planet4" parent="Planets" instance=ExtResource("3_fph74")]
+position = Vector2(402, 246)
+mass = 1600.0
+laser_speed = 700.0
+
+[node name="EnemyShips" type="Node" parent="."]
+
+[node name="EnemyShip" parent="EnemyShips" instance=ExtResource("2_vdhlw")]
+position = Vector2(759, 306)
+
+[node name="EnemyShip2" parent="EnemyShips" instance=ExtResource("2_vdhlw")]
+position = Vector2(771, 529)
+rotation = 0.295914
+
+[node name="EnemyShip3" parent="EnemyShips" instance=ExtResource("2_vdhlw")]
+position = Vector2(720, 179)
+rotation = -0.324077

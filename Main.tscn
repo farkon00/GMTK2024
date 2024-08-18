@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=11 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
 [ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_c4yi3"]
 [ext_resource type="SpriteFrames" uid="uid://c61jd7iam04n3" path="res://Textures/Player/player_frames.tres" id="2_h6t5m"]
+[ext_resource type="Texture2D" uid="uid://d4b44hojwum0e" path="res://Textures/Laser/laser_red.png" id="3_alwoh"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
@@ -61,13 +62,19 @@ position = Vector2(-0.000976562, 4.57764e-05)
 scale = Vector2(0.999999, 0.999999)
 sprite_frames = ExtResource("2_h6t5m")
 
+[node name="Laser" type="Sprite2D" parent="Player"]
+z_index = 5
+texture_filter = 3
+position = Vector2(30, -1)
+texture = ExtResource("3_alwoh")
+
 [node name="EnemyShip" type="StaticBody2D" parent="."]
 position = Vector2(900, 314)
 scale = Vector2(3.7, 3.7)
 script = ExtResource("1_yvwe1")
 missile_launch_chance_second = 0.6
 initial_missile_timeout = 0.5
-missile_cooldown = 1.0
+initial_hearts_count = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
 position = Vector2(-0.135132, 0)
@@ -157,6 +164,38 @@ size_flags_vertical = 4
 [node name="GameOverLabel" type="Label" parent="GameManager/GameOverUI/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Game Over"
+label_settings = SubResource("LabelSettings_n6bjm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YouWinUI" type="Control" parent="GameManager"]
+process_mode = 4
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="PanelContainer" type="PanelContainer" parent="GameManager/YouWinUI"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.600009, 0.60001)
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/YouWinUI/PanelContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/YouWinUI/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GameOverLabel" type="Label" parent="GameManager/YouWinUI/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "You win"
 label_settings = SubResource("LabelSettings_n6bjm")
 horizontal_alignment = 1
 vertical_alignment = 1

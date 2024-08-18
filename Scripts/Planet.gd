@@ -10,10 +10,10 @@ static var G = 4000
 var laser_state: int = 0
 
 func get_force_vector(pos: Vector2):
-    return G * mass / (position - pos).length_squared() * (position - pos).normalized()
+	return G * mass / (position - pos).length_squared() * (position - pos).normalized()
 
 func _process(delta):
-    if GameManager.instance.is_game_stopped: return
-    mass += laser_speed * delta * laser_state
-    mass = min(max(mass, mass_min), mass_max)
-    scale = Vector2(1, 1) * sqrt(mass / density)
+	if GameManager.instance.is_game_stopped: return
+	mass += laser_speed * delta * laser_state
+	mass = min(max(mass, mass_min), mass_max)
+	scale = Vector2(1, 1) * sqrt(mass / density)

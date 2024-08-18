@@ -78,7 +78,6 @@ position = Vector2(900, 314)
 script = ExtResource("1_yvwe1")
 missile_launch_chance_second = 0.6
 initial_missile_timeout = 0.5
-initial_hearts_count = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
 position = Vector2(4, 0.5)
@@ -217,6 +216,9 @@ connects_to = NodePath("../Portal")
 
 [node name="CollisionShape2D" parent="Portal2/TeleportationArea" index="0"]
 position = Vector2(10, 60)
+
+[node name="Area2D" parent="Portal2" index="3"]
+process_priority = 1
 
 [node name="CollisionShape2D" parent="Portal2/Area2D" index="0"]
 position = Vector2(30, 60)

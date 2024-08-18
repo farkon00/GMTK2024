@@ -21,9 +21,9 @@ func process_laser_display():
 	elif laser_state == -1:
 		laser.texture = remove_laser_res
 
-	laser.scale.x = (get_global_mouse_position() - position - laser_base).length()
-	laser.position = laser_base + (get_global_mouse_position() - position - laser_base) / 2
-	laser.rotation = (get_global_mouse_position() - position - laser_base).angle()
+	laser.scale.x = (GameManager.instance.currently_changing.position - position - laser_base).length()
+	laser.position = laser_base + (GameManager.instance.currently_changing.position - position - laser_base) / 2
+	laser.rotation = (GameManager.instance.currently_changing.position - position - laser_base).angle()
 	laser.visible = true
 
 func _process(_delta):

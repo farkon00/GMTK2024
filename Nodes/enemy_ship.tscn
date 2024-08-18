@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfc3dbdyunhqd"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_flxn0"]
+[ext_resource type="SpriteFrames" uid="uid://qye1wuwg5k82" path="res://Textures/EnemyShip/enemy_ship_frames.tres" id="2_b246u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt07k"]
+size = Vector2(96, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00k54"]
+size = Vector2(96, 31)
+
+[node name="EnemyShip" type="StaticBody2D"]
+z_index = 4
+position = Vector2(900, 314)
+script = ExtResource("1_flxn0")
+missile_launch_chance_second = 0.6
+initial_missile_timeout = 0.5
+initial_hearts_count = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0.5)
+shape = SubResource("RectangleShape2D_vt07k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+rotation = 1.5708
+sprite_frames = ExtResource("2_b246u")
+
+[node name="Hearts" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -24.0541
+offset_right = 19.91
+offset_bottom = -20.0541
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hearts"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = -0.375
+anchor_right = 0.501
+anchor_bottom = -0.375
+offset_left = -70.9949
+offset_top = -60.4459
+offset_right = 73.0051
+offset_bottom = -4.44589
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 0.5)
+shape = SubResource("RectangleShape2D_00k54")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

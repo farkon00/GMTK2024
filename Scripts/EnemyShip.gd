@@ -23,8 +23,8 @@ func _ready():
 func launch_missile():
 	var missile: Missile = missile_res.instantiate()
 	missile.position = position
-	missile.direction = ($"../Player".position - position).normalized()
-	$"..".add_child(missile)
+	missile.direction = ($"../../Player".position - position).normalized()
+	$"../..".add_child(missile)
 	start_timeout(missile_cooldown)
 
 func process_missile_launching(delta: float):

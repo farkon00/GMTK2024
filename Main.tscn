@@ -1,139 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=5 format=3 uid="uid://60x0tpw1kfl1"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
-[ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
-[ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_c4yi3"]
-[ext_resource type="SpriteFrames" uid="uid://c61jd7iam04n3" path="res://Textures/Player/player_frames.tres" id="2_h6t5m"]
-[ext_resource type="Texture2D" uid="uid://d4b44hojwum0e" path="res://Textures/Laser/laser_red.png" id="3_alwoh"]
+[ext_resource type="PackedScene" uid="uid://hjk2yrp438kv" path="res://Levels/level1.tscn" id="2_vivy5"]
+[ext_resource type="PackedScene" uid="uid://dbagmxdk5mime" path="res://Levels/level2.tscn" id="3_4e7he"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
-[ext_resource type="SpriteFrames" uid="uid://qye1wuwg5k82" path="res://Textures/EnemyShip/enemy_ship_frames.tres" id="5_lv5jn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
-size = Vector2(67.8985, 40.0182)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt07k"]
-size = Vector2(96, 31)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_00k54"]
-size = Vector2(96, 31)
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6bjm"]
 font_size = 90
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" type="StaticBody2D" parent="."]
-position = Vector2(50, 153)
-script = ExtResource("1_dvysg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-14.0508, 0.0273132)
-shape = SubResource("RectangleShape2D_3hqci")
-
-[node name="Area2D" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-position = Vector2(-14.0508, 0.0273132)
-shape = SubResource("RectangleShape2D_3hqci")
-
-[node name="Hearts" type="Control" parent="Player"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 20.0
-offset_right = 20.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Player/Hearts"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -141.0
-offset_right = 100.0
-offset_bottom = -85.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(-0.000976562, 4.57764e-05)
-scale = Vector2(0.999999, 0.999999)
-sprite_frames = ExtResource("2_h6t5m")
-
-[node name="Laser" type="Sprite2D" parent="Player"]
-z_index = 3
-texture_filter = 3
-position = Vector2(30, -1)
-texture = ExtResource("3_alwoh")
-
-[node name="EnemyShip" type="StaticBody2D" parent="."]
-z_index = 4
-position = Vector2(900, 314)
-script = ExtResource("1_yvwe1")
-missile_launch_chance_second = 0.6
-initial_missile_timeout = 0.5
-initial_hearts_count = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
-position = Vector2(4, 0.5)
-shape = SubResource("RectangleShape2D_vt07k")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EnemyShip"]
-texture_filter = 3
-rotation = 1.5708
-sprite_frames = ExtResource("5_lv5jn")
-
-[node name="Hearts" type="Control" parent="EnemyShip"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -20.0
-offset_top = -24.0541
-offset_right = 19.91
-offset_bottom = -20.0541
-
-[node name="HBoxContainer" type="HBoxContainer" parent="EnemyShip/Hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.501
-anchor_top = -0.375
-anchor_right = 0.501
-anchor_bottom = -0.375
-offset_left = -70.9949
-offset_top = -60.4459
-offset_right = 73.0051
-offset_bottom = -4.44589
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Area2D" type="Area2D" parent="EnemyShip"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip/Area2D"]
-position = Vector2(4, 0.5)
-shape = SubResource("RectangleShape2D_00k54")
-
-[node name="Planets" type="Node" parent="."]
-
-[node name="Planet" parent="Planets" instance=ExtResource("2_c4yi3")]
-position = Vector2(499, 302)
-mass = 400.0
-laser_speed = 700.0
-
-[node name="Planet2" parent="Planets" instance=ExtResource("2_c4yi3")]
-position = Vector2(678, 111)
-mass = 1600.0
-laser_speed = 700.0
-
-[node name="Planet3" parent="Planets" instance=ExtResource("2_c4yi3")]
-position = Vector2(550, 592)
-mass = 500.0
-laser_speed = 700.0
-
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("4_0dhc0")
+levels = Array[PackedScene]([ExtResource("2_vivy5"), ExtResource("3_4e7he")])
 
 [node name="GameOverUI" type="Control" parent="GameManager"]
 process_mode = 4
@@ -199,6 +77,4 @@ label_settings = SubResource("LabelSettings_n6bjm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="EnemyShip/Area2D" to="EnemyShip" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="EnemyShip/Area2D" to="EnemyShip" method="_on_area_2d_body_exited"]
+[node name="Level" parent="." instance=ExtResource("2_vivy5")]

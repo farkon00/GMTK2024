@@ -16,7 +16,7 @@ func explode():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if GameManager.instance.is_gameover: return
+	if GameManager.instance.is_game_stopped: return
 	var pos_delta = movement_speed * delta * direction
 	var planets = $"../Planets".get_children() as Array[Planet]
 	var gravity_acceleration = Vector2()

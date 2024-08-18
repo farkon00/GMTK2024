@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=9 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dvysg"]
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_yvwe1"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqci"]
-size = Vector2(39.6148, 40.0182)
+size = Vector2(480, 535)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_twwjw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6bjm"]
 font_size = 90
@@ -19,13 +21,7 @@ position = Vector2(50, 153)
 script = ExtResource("1_dvysg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0.0910721, 0.0273132)
-shape = SubResource("RectangleShape2D_3hqci")
-
-[node name="Area2D" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-position = Vector2(0.0910721, 0.0273132)
+position = Vector2(66, 53.5)
 shape = SubResource("RectangleShape2D_3hqci")
 
 [node name="Hearts" type="Control" parent="Player"]
@@ -52,6 +48,8 @@ scale = Vector2(1.24, 0.352797)
 alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(-0.000976562, 4.57764e-05)
+scale = Vector2(0.999999, 0.999999)
 sprite_frames = ExtResource("2_h6t5m")
 
 [node name="EnemyShip" type="StaticBody2D" parent="."]
@@ -64,7 +62,7 @@ missile_cooldown = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShip"]
 position = Vector2(0.091074, 0.0273132)
-shape = SubResource("RectangleShape2D_3hqci")
+shape = SubResource("ConvexPolygonShape2D_twwjw")
 
 [node name="ColorRect" type="ColorRect" parent="EnemyShip"]
 offset_left = -20.3097
@@ -153,6 +151,5 @@ label_settings = SubResource("LabelSettings_n6bjm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="EnemyShip/Area2D" to="EnemyShip" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="EnemyShip/Area2D" to="EnemyShip" method="_on_area_2d_body_exited"]

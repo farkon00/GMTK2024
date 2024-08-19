@@ -1,21 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=8 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="PackedScene" uid="uid://bkclfsio7no2j" path="res://Levels/tutorial.tscn" id="2_stkyg"]
 [ext_resource type="PackedScene" uid="uid://hjk2yrp438kv" path="res://Levels/level1.tscn" id="2_vivy5"]
 [ext_resource type="PackedScene" uid="uid://dbagmxdk5mime" path="res://Levels/level2.tscn" id="3_4e7he"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
 [ext_resource type="Theme" uid="uid://cvftj2ibeautp" path="res://Themes/LevelSelectScreen.tres" id="4_xl53m"]
+[ext_resource type="FontFile" uid="uid://cjrm3yts0o36t" path="res://Textures/DefaultFont.ttf" id="6_gj6jp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6bjm"]
 font_size = 90
 
 [node name="Node2D" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("level_box")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("level_box", "timer_label")]
 process_priority = 2
 script = ExtResource("4_0dhc0")
 levels = Array[PackedScene]([ExtResource("2_stkyg"), ExtResource("2_vivy5"), ExtResource("3_4e7he")])
 level_box = NodePath("LevelSelectUI/Panel/Control/LevelBox")
+timer_label = NodePath("TimerUI/HBoxContainer/TimerLabel")
 
 [node name="GameOverUI" type="Control" parent="GameManager"]
 visible = false
@@ -145,6 +147,30 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme = ExtResource("4_xl53m")
 text = "3"
+
+[node name="TimerUI" type="Control" parent="GameManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameManager/TimerUI"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TimerLabel" type="Label" parent="GameManager/TimerUI/HBoxContainer"]
+z_index = 10
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_gj6jp")
+theme_override_font_sizes/font_size = 50
+text = "00:00:12.735"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="GameManager/GameOverUI/Panel/VBoxContainer/LevelSelectButton" to="GameManager" method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="GameManager/YouWinUI/Panel/VBoxContainer/LevelSelectButton" to="GameManager" method="_on_level_select_button_pressed"]

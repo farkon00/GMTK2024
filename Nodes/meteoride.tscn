@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b62l6ess6gn2g"]
 
 [ext_resource type="Script" path="res://Scripts/Meteoride.gd" id="1_a8xy0"]
-[ext_resource type="Texture2D" uid="uid://50fmevshjpnp" path="res://Textures/Planets/Planet1.png" id="2_wkoh2"]
+[ext_resource type="Texture2D" uid="uid://d3xkfivqy3bxr" path="res://Textures/Planets/Meteoride.png" id="2_p43jr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_it8ps"]
 radius = 19.7538
@@ -22,8 +22,8 @@ shape = SubResource("CircleShape2D_it8ps")
 [node name="Sprite2D" type="Sprite2D" parent="Meteoride"]
 z_index = 5
 position = Vector2(0.5, 0)
-scale = Vector2(0.0121875, 0.0125)
-texture = ExtResource("2_wkoh2")
+scale = Vector2(0.017, 0.018)
+texture = ExtResource("2_p43jr")
 
 [node name="Area2D" type="Area2D" parent="Meteoride"]
 

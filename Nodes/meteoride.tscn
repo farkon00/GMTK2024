@@ -10,6 +10,7 @@ radius = 19.7538
 radius = 19.575
 
 [node name="PathFollow2D" type="PathFollow2D"]
+loop = false
 
 [node name="Meteoride" type="StaticBody2D" parent="."]
 script = ExtResource("1_a8xy0")

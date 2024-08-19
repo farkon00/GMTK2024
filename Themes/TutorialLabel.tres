@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b7s4pdn6omblw"]
+
+[ext_resource type="FontFile" uid="uid://cjrm3yts0o36t" path="res://Textures/DefaultFont.ttf" id="1_cqn1q"]
+
+[resource]
+default_font = ExtResource("1_cqn1q")
+default_font_size = 40

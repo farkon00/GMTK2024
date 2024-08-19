@@ -3,10 +3,13 @@ extends Node
 
 @export var levels: Array[PackedScene] = []
 @export var level_box: Node
+@export var timer_label: Label
+@export var finish_time_label: Label
 
 static var instance: GameManager
 
 var is_game_stopped: bool = true
+var level_timer_ms: float = 0 
 var currently_changing: Planet = null
 var enemy_ships: Array[EnemyShip] = []
 var time_since_victory: float = 0
@@ -25,10 +28,12 @@ func initialize_level(id: int):
 		current_level.free()
 	current_level = levels[id].instantiate()
 	$"..".add_child(current_level)
+	set_active($"TimerUI", true)
 	is_game_stopped = false
 	has_won = false
 	time_since_victory = 0
 	currently_changing = null
+	level_timer_ms = 0
 
 	enemy_ships.clear()
 	for child in current_level.get_node("EnemyShips").get_children():
@@ -55,6 +60,7 @@ func _ready():
 func gameover():
 	is_game_stopped = true
 	set_active($"GameOverUI", true)
+	set_active($"TimerUI", false)
 
 func _input(event):
 	if is_game_stopped || !(event is InputEventMouseButton): return
@@ -80,9 +86,30 @@ func _input(event):
 func win():
 	is_game_stopped = true
 	has_won = true
+	finish_time_label.text = get_timer_string()
 	set_active($"YouWinUI", true)
+	set_active($"TimerUI", false)
 
-func _process(delta):
+func pad_digits(val: int, digit_cnt: int):
+	assert(str(val).length() <= digit_cnt)
+	var res = ""
+	for _i in range(digit_cnt - str(val).length()):
+		res += "0"
+	res += str(val)
+	return res
+
+func get_timer_string():
+	var timer_ms_rounded = int(level_timer_ms)
+	return "{0}:{1}.{2}".format([
+		pad_digits(timer_ms_rounded / 60000, 2), 
+		pad_digits(timer_ms_rounded / 1000 % 60, 2),
+		pad_digits(timer_ms_rounded % 1000, 3)
+	])
+
+func _process(delta: float):
+	level_timer_ms += delta * 1000
+	timer_label.text = get_timer_string()
+
 	if has_won:
 		time_since_victory += delta
 	if time_since_victory >= 5:

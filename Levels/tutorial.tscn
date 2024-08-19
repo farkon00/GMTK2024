@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkclfsio7no2j"]
+[gd_scene load_steps=6 format=3 uid="uid://bkclfsio7no2j"]
 
 [ext_resource type="PackedScene" uid="uid://c3y6cnuxa8eli" path="res://Nodes/player.tscn" id="1_c4abv"]
 [ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_3qd17"]
 [ext_resource type="PackedScene" uid="uid://dfc3dbdyunhqd" path="res://Nodes/enemy_ship.tscn" id="3_dicn1"]
 [ext_resource type="Script" path="res://Scripts/TutorialManager.gd" id="4_kea3s"]
+[ext_resource type="Theme" uid="uid://b7s4pdn6omblw" path="res://Themes/TutorialLabel.tres" id="5_nsmdf"]
 
 [node name="Level" type="Node2D"]
 metadata/level_id = 0
@@ -49,6 +50,7 @@ offset_left = -127.024
 offset_top = -37.362
 offset_right = 1029.98
 offset_bottom = 179.638
+theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "Welcome to <game name>
 Let's show you around here"
@@ -67,6 +69,7 @@ offset_left = -126.024
 offset_top = -36.362
 offset_right = 1019.98
 offset_bottom = 131.638
+theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "Here is your ship, you should protect it"
 horizontal_alignment = 1
@@ -84,6 +87,7 @@ offset_left = -126.024
 offset_top = -36.362
 offset_right = 1019.98
 offset_bottom = 131.638
+theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "Here is an enemy ship.
 It will shoot missiles at you."
@@ -102,6 +106,7 @@ offset_left = -126.024
 offset_top = -36.362
 offset_right = 1019.98
 offset_bottom = 131.638
+theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "Missiles attract to planets.
 Planet's gravitation grows with its size."
@@ -120,6 +125,7 @@ offset_left = -126.024
 offset_top = -36.362
 offset_right = 1019.98
 offset_bottom = 131.638
+theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "Here is one of the planets.
 Hold left mouse button to make it bigger."
@@ -138,6 +144,7 @@ offset_left = -126.024
 offset_top = -36.362
 offset_right = 1019.98
 offset_bottom = 131.638
+theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "Now hold right mouse button.
 This makes planet smaller."
@@ -156,6 +163,7 @@ offset_left = -126.024
 offset_top = -36.362
 offset_right = 1019.98
 offset_bottom = 131.638
+theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "These are all the basics, good luck."
 horizontal_alignment = 1
@@ -172,6 +180,7 @@ offset_left = -127.024
 offset_top = 529.638
 offset_right = 1029.98
 offset_bottom = 610.638
+theme = ExtResource("5_nsmdf")
 theme_override_colors/font_color = Color(0.522724, 0.522724, 0.522724, 1)
 theme_override_font_sizes/font_size = 40
 text = "<Click anywhere to continue>"

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://hjk2yrp438kv"]
+[gd_scene load_steps=6 format=3 uid="uid://hjk2yrp438kv"]
 
 [ext_resource type="PackedScene" uid="uid://c3y6cnuxa8eli" path="res://Nodes/player.tscn" id="1_c30l8"]
 [ext_resource type="PackedScene" uid="uid://dfc3dbdyunhqd" path="res://Nodes/enemy_ship.tscn" id="2_3pkgd"]
+[ext_resource type="Texture2D" uid="uid://uh1r8jktwble" path="res://Textures/Planets/Planet2.png" id="3_3f363"]
 [ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="3_lmj3f"]
+[ext_resource type="Texture2D" uid="uid://cq0kny86uh14m" path="res://Textures/Planets/Planet3.png" id="4_h737j"]
 
 [node name="Level" type="Node2D"]
 metadata/level_id = 0
@@ -21,11 +23,21 @@ position = Vector2(678, 111)
 mass = 1600.0
 laser_speed = 700.0
 
+[node name="Sprite2D" parent="Planets/Planet2" index="1"]
+texture = ExtResource("3_3f363")
+
 [node name="Planet3" parent="Planets" instance=ExtResource("3_lmj3f")]
 position = Vector2(550, 592)
 mass = 500.0
 laser_speed = 700.0
 
+[node name="Sprite2D" parent="Planets/Planet3" index="1"]
+texture = ExtResource("4_h737j")
+
 [node name="EnemyShips" type="Node" parent="."]
 
 [node name="EnemyShip" parent="EnemyShips" instance=ExtResource("2_3pkgd")]
+
+[editable path="Planets/Planet"]
+[editable path="Planets/Planet2"]
+[editable path="Planets/Planet3"]

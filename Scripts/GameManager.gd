@@ -111,7 +111,7 @@ func _process(delta: float):
 		set_active($"LevelSelectUI", true)
 		set_active($"TimerUI", false)
 		laser_sound.stop()
-		
+
 	level_timer_ms += delta * 1000
 	timer_label.text = get_timer_string()
 	if currently_changing != null:
@@ -119,3 +119,7 @@ func _process(delta: float):
 			laser_sound.play()
 	else:
 		laser_sound.stop()
+
+func _on_play_button_pressed():
+	set_active($"MainMenuUI", false)
+	set_active($"LevelSelectUI", true)

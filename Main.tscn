@@ -120,6 +120,7 @@ theme = ExtResource("4_xl53m")
 text = "Level Select"
 
 [node name="LevelSelectUI" type="Control" parent="GameManager"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
@@ -208,9 +209,46 @@ text = "00:00:12.735"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MainMenuUI" type="Control" parent="GameManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="GameManager/MainMenuUI"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 1155.0
+offset_bottom = 228.0
+theme_override_fonts/font = ExtResource("6_gj6jp")
+theme_override_font_sizes/font_size = 131
+text = "Space Scaler"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="GameManager/MainMenuUI"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 191.0
+offset_right = 867.0
+offset_bottom = 214.0
+theme_override_fonts/font = ExtResource("6_gj6jp")
+theme_override_font_sizes/font_size = 26
+text = "by farkon00, rostcraft and TheFuturoma"
+
+[node name="Button" type="Button" parent="GameManager/MainMenuUI"]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 316.0
+offset_right = 843.0
+offset_bottom = 461.0
+theme_override_fonts/font = ExtResource("6_gj6jp")
+theme_override_font_sizes/font_size = 116
+text = "Play"
+
 [node name="LaserSound" type="AudioStreamPlayer" parent="GameManager"]
 stream = SubResource("AudioStreamMP3_5tp3f")
 parameters/looping = true
 
 [connection signal="pressed" from="GameManager/GameOverUI/Panel/VBoxContainer/LevelSelectButton" to="GameManager" method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="GameManager/YouWinUI/Panel/VBoxContainer/LevelSelectButton" to="GameManager" method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="GameManager/MainMenuUI/Button" to="GameManager" method="_on_play_button_pressed"]

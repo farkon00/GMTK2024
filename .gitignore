@@ -1,2 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
+
+# @rostcraft specific ignores
+build/
+export_presets.cfg

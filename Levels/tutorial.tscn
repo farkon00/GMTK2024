@@ -55,7 +55,7 @@ offset_right = 1029.98
 offset_bottom = 179.638
 theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
-text = "Welcome to <game name>
+text = "Welcome to Space Scaler
 Let's show you around here"
 horizontal_alignment = 1
 

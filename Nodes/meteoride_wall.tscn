@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpfe0m2srptep"]
+
+[ext_resource type="Script" path="res://Scripts/MeteorideWall.gd" id="1_71h6n"]
+
+[sub_resource type="Curve2D" id="Curve2D_betvv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 79, 74, 0, 0, 0, 0, 233, 62, 0, 0, 0, 0, 356, 33)
+}
+point_count = 4
+
+[node name="MeteorideWall" type="Path2D"]
+curve = SubResource("Curve2D_betvv")
+script = ExtResource("1_71h6n")

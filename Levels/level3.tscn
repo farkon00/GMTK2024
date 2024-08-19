@@ -43,19 +43,19 @@ rotation = -0.586144
 connects_to = NodePath("../Portal2")
 
 [node name="Portal2" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("6_rgrgi")]
-position = Vector2(994, 211)
+position = Vector2(1072, 206)
 rotation = -0.586144
 connects_to = NodePath("../Portal")
 
 [node name="Sprite2D" parent="Portal2" index="0"]
-position = Vector2(5, 59)
+position = Vector2(-16, 1)
 flip_h = true
 
 [node name="CollisionShape2D" parent="Portal2/TeleportationArea" index="0"]
-position = Vector2(9.68079, 60.0002)
+position = Vector2(9.888, 60)
 
 [node name="CollisionShape2D" parent="Portal2/Area2D" index="0"]
-position = Vector2(29.9277, 60.0003)
+position = Vector2(29.9951, 59.9999)
 
 [editable path="Planets/Planet1"]
 [editable path="Planets/Planet2"]

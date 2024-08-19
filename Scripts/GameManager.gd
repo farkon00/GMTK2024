@@ -110,6 +110,7 @@ func _process(delta: float):
 		is_game_stopped = true
 		set_active($"LevelSelectUI", true)
 		set_active($"TimerUI", false)
+		laser_sound.stop()
 		
 	level_timer_ms += delta * 1000
 	timer_label.text = get_timer_string()

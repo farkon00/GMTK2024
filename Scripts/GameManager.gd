@@ -6,6 +6,8 @@ extends Node
 @export var timer_label: Label
 @export var finish_time_label: Label
 
+@export var laser_sound: AudioStreamPlayer
+
 static var instance: GameManager
 
 var is_game_stopped: bool = true
@@ -48,7 +50,7 @@ func _on_level_select_button_pressed():
 func _ready():
 	set_active($"YouWinUI", false)
 	set_active($"GameOverUI", false)
-	
+
 	var buttons = level_box.get_children()
 	for i in range(buttons.size()):
 		buttons[i].connect("pressed", func (): level_selected(i))
@@ -105,3 +107,8 @@ func get_timer_string():
 func _process(delta: float):
 	level_timer_ms += delta * 1000
 	timer_label.text = get_timer_string()
+	if currently_changing != null:
+		if !laser_sound.playing:
+			laser_sound.play()
+	else:
+		laser_sound.stop()

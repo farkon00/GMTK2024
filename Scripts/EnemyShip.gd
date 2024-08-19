@@ -6,6 +6,7 @@ extends Ship
 @export var missile_cooldown: float = 3
 
 const missile_res = preload("res://Nodes/missile.tscn")
+const audio_stream_player = preload("res://Nodes/enemy_audio_player.tscn")
 
 var is_timedout = false
 
@@ -32,6 +33,9 @@ func process_missile_launching(delta: float):
 		launch_missile()
 
 func die():
+	var audio_player = audio_stream_player.instantiate()
+	$"..".add_child(audio_player)
+	audio_player.play()
 	super()
 	GameManager.instance.enemy_ships.erase(self)
 	if GameManager.instance.enemy_ships.is_empty():

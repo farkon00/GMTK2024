@@ -109,8 +109,6 @@ offset_right = 1019.98
 offset_bottom = 131.638
 theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
-text = "Missiles are attracted to planets.
-Planet's gravitation grows with its size."
 horizontal_alignment = 1
 
 [node name="PlanetsLabel" type="Label" parent="TutorialManager/Panel"]

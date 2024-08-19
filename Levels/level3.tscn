@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://0w84ms8usmem"]
+
+[ext_resource type="PackedScene" uid="uid://c3y6cnuxa8eli" path="res://Nodes/player.tscn" id="1_8aiaj"]
+[ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_2vefl"]
+[ext_resource type="Texture2D" uid="uid://uh1r8jktwble" path="res://Textures/Planets/Planet2.png" id="3_etyvg"]
+[ext_resource type="Texture2D" uid="uid://cq0kny86uh14m" path="res://Textures/Planets/Planet3.png" id="4_xbopm"]
+[ext_resource type="PackedScene" uid="uid://dfc3dbdyunhqd" path="res://Nodes/enemy_ship.tscn" id="5_r2gr1"]
+[ext_resource type="PackedScene" uid="uid://c8tds7dtmak5k" path="res://Nodes/portal.tscn" id="6_rgrgi"]
+
+[node name="Level" type="Node2D"]
+metadata/level_id = 3
+metadata/has_timer = true
+
+[node name="Player" parent="." instance=ExtResource("1_8aiaj")]
+position = Vector2(353, 125)
+
+[node name="Planets" type="Node" parent="."]
+
+[node name="Planet1" parent="Planets" instance=ExtResource("2_2vefl")]
+position = Vector2(277, 326)
+mass = 1600.0
+laser_speed = 700.0
+
+[node name="Sprite2D" parent="Planets/Planet1" index="1"]
+texture = ExtResource("3_etyvg")
+
+[node name="Planet2" parent="Planets" instance=ExtResource("2_2vefl")]
+position = Vector2(483, 589)
+mass = 500.0
+laser_speed = 700.0
+
+[node name="Sprite2D" parent="Planets/Planet2" index="1"]
+texture = ExtResource("4_xbopm")
+
+[node name="EnemyShips" type="Node" parent="."]
+
+[node name="EnemyShip" parent="EnemyShips" instance=ExtResource("5_r2gr1")]
+position = Vector2(900, 354)
+
+[node name="Portal" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("6_rgrgi")]
+position = Vector2(210, 477)
+rotation = -0.586144
+connects_to = NodePath("../Portal2")
+
+[node name="Portal2" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("6_rgrgi")]
+position = Vector2(994, 211)
+rotation = -0.586144
+connects_to = NodePath("../Portal")
+
+[node name="Sprite2D" parent="Portal2" index="0"]
+position = Vector2(5, 59)
+flip_h = true
+
+[node name="CollisionShape2D" parent="Portal2/TeleportationArea" index="0"]
+position = Vector2(9.68079, 60.0002)
+
+[node name="CollisionShape2D" parent="Portal2/Area2D" index="0"]
+position = Vector2(29.9277, 60.0003)
+
+[editable path="Planets/Planet1"]
+[editable path="Planets/Planet2"]
+[editable path="Portal2"]

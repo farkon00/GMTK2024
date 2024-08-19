@@ -5,5 +5,5 @@ var speed: float
 
 func _process(delta):
 	$"..".progress_ratio += delta * speed / 100
-	if $"..".progress_ratio == 1:
-		free()
+	if $"..".progress_ratio >= 1:
+		$"..".queue_free()

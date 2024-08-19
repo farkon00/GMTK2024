@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2bjdo1xku4jd"]
+
+[ext_resource type="AudioStream" uid="uid://bm6c4bvc60is5" path="res://Sounds/MissileExplosion.wav" id="1_28srs"]
+[ext_resource type="Script" path="res://Scripts/AudioDestructor.gd" id="2_0iun4"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_28srs")
+script = ExtResource("2_0iun4")

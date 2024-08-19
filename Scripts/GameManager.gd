@@ -28,6 +28,7 @@ func initialize_level(id: int):
 		current_level.free()
 	current_level = levels[id].instantiate()
 	$"..".add_child(current_level)
+	$"..".move_child(current_level, 0)
 	set_active($"TimerUI", current_level.get_meta("has_timer"))
 	is_game_stopped = false
 	currently_changing = null
@@ -105,6 +106,11 @@ func get_timer_string():
 	])
 
 func _process(delta: float):
+	if !is_game_stopped && Input.is_action_just_pressed("QuitLevel"):
+		is_game_stopped = true
+		set_active($"LevelSelectUI", true)
+		set_active($"TimerUI", false)
+		
 	level_timer_ms += delta * 1000
 	timer_label.text = get_timer_string()
 	if currently_changing != null:

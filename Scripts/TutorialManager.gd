@@ -6,6 +6,8 @@ var state: states = states.Welcome
 var recorded_mass: float = 0
 
 func _process(delta: float) -> void:
+	if GameManager.instance.is_game_stopped:
+		queue_free()
 	time += delta
 	if state == states.EnemyShip2 && $"../Missile" == null:
 		$"Panel/ContinueLabel".visible = true

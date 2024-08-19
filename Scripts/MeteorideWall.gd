@@ -1,9 +1,11 @@
 class_name MeteorideWall
 extends Path2D
 
-@export var time_inverval: float = 0
-@export var speed: float = 50
-@export var meteoride: PackedScene
+@export var time_inverval: float = 0.3
+@export var speed: float = 30
+
+const meteoride: PackedScene = preload("res://Nodes/meteoride.tscn")
+
 var time_since_spawn: float = 0
 
 func _process(delta):

@@ -14,7 +14,6 @@ func explode():
 	get_tree().get_root().add_child(emitter)
 	emitter.position = position + Vector2.from_angle(rotation) * ($"CollisionShape2D".shape as RectangleShape2D).size.x / 2
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if GameManager.instance.is_game_stopped: return
 	var pos_delta = movement_speed * delta * direction

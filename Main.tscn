@@ -1,5 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://60x0tpw1kfl1"]
 
+[ext_resource type="PackedScene" uid="uid://bkclfsio7no2j" path="res://Levels/tutorial.tscn" id="2_stkyg"]
 [ext_resource type="PackedScene" uid="uid://hjk2yrp438kv" path="res://Levels/level1.tscn" id="2_vivy5"]
 [ext_resource type="PackedScene" uid="uid://dbagmxdk5mime" path="res://Levels/level2.tscn" id="3_4e7he"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
@@ -13,7 +14,7 @@ font_size = 90
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("level_box")]
 process_priority = 2
 script = ExtResource("4_0dhc0")
-levels = Array[PackedScene]([ExtResource("2_vivy5"), ExtResource("3_4e7he")])
+levels = Array[PackedScene]([ExtResource("2_stkyg"), ExtResource("2_vivy5"), ExtResource("3_4e7he")])
 level_box = NodePath("LevelSelectUI/Panel/Control/LevelBox")
 
 [node name="GameOverUI" type="Control" parent="GameManager"]

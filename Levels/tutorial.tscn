@@ -1,0 +1,178 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkclfsio7no2j"]
+
+[ext_resource type="PackedScene" uid="uid://c3y6cnuxa8eli" path="res://Nodes/player.tscn" id="1_c4abv"]
+[ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_3qd17"]
+[ext_resource type="PackedScene" uid="uid://dfc3dbdyunhqd" path="res://Nodes/enemy_ship.tscn" id="3_dicn1"]
+[ext_resource type="Script" path="res://Scripts/TutorialManager.gd" id="4_kea3s"]
+
+[node name="Level" type="Node2D"]
+metadata/level_id = 0
+
+[node name="Player" parent="." instance=ExtResource("1_c4abv")]
+position = Vector2(50, 313)
+
+[node name="Planets" type="Node" parent="."]
+process_mode = 4
+
+[node name="Planet2" parent="Planets" instance=ExtResource("2_3qd17")]
+position = Vector2(1008, 334)
+laser_speed = 700.0
+
+[node name="ShowcasePlanet" parent="Planets" instance=ExtResource("2_3qd17")]
+position = Vector2(497, 164)
+mass = 800.0
+laser_speed = 700.0
+
+[node name="EnemyShips" type="Node" parent="."]
+process_mode = 4
+
+[node name="EnemyShip" parent="EnemyShips" instance=ExtResource("3_dicn1")]
+position = Vector2(824, 328)
+
+[node name="TutorialManager" type="Node" parent="."]
+script = ExtResource("4_kea3s")
+
+[node name="Panel" type="Panel" parent="TutorialManager"]
+z_index = 10
+offset_right = 1152.0
+offset_bottom = 651.0
+
+[node name="WelcomeLabel" type="Label" parent="TutorialManager/Panel"]
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -127.024
+offset_top = -37.362
+offset_right = 1029.98
+offset_bottom = 179.638
+theme_override_font_sizes/font_size = 40
+text = "Welcome to <game name>
+Let's show you around here"
+horizontal_alignment = 1
+
+[node name="ShipLabel" type="Label" parent="TutorialManager/Panel"]
+visible = false
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -126.024
+offset_top = -36.362
+offset_right = 1019.98
+offset_bottom = 131.638
+theme_override_font_sizes/font_size = 40
+text = "Here is your ship, you should protect it"
+horizontal_alignment = 1
+
+[node name="EnemyShipLabel" type="Label" parent="TutorialManager/Panel"]
+visible = false
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -126.024
+offset_top = -36.362
+offset_right = 1019.98
+offset_bottom = 131.638
+theme_override_font_sizes/font_size = 40
+text = "Here is an enemy ship.
+It will shoot missiles at you."
+horizontal_alignment = 1
+
+[node name="EnemyShipLabel2" type="Label" parent="TutorialManager/Panel"]
+visible = false
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -126.024
+offset_top = -36.362
+offset_right = 1019.98
+offset_bottom = 131.638
+theme_override_font_sizes/font_size = 40
+text = "Missiles attract to planets.
+Planet's gravitation grows with its size."
+horizontal_alignment = 1
+
+[node name="PlanetsLabel" type="Label" parent="TutorialManager/Panel"]
+visible = false
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -126.024
+offset_top = -36.362
+offset_right = 1019.98
+offset_bottom = 131.638
+theme_override_font_sizes/font_size = 40
+text = "Here is one of the planets.
+Hold left mouse button to make it bigger."
+horizontal_alignment = 1
+
+[node name="PlanetsLabel2" type="Label" parent="TutorialManager/Panel"]
+visible = false
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -126.024
+offset_top = -36.362
+offset_right = 1019.98
+offset_bottom = 131.638
+theme_override_font_sizes/font_size = 40
+text = "Now hold right mouse button.
+This makes planet smaller."
+horizontal_alignment = 1
+
+[node name="GoodLuck" type="Label" parent="TutorialManager/Panel"]
+visible = false
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -126.024
+offset_top = -36.362
+offset_right = 1019.98
+offset_bottom = 131.638
+theme_override_font_sizes/font_size = 40
+text = "These are all the basics, good luck."
+horizontal_alignment = 1
+
+[node name="ContinueLabel" type="Label" parent="TutorialManager/Panel"]
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -127.024
+offset_top = 529.638
+offset_right = 1029.98
+offset_bottom = 610.638
+theme_override_colors/font_color = Color(0.522724, 0.522724, 0.522724, 1)
+theme_override_font_sizes/font_size = 40
+text = "<Click anywhere to continue>"
+horizontal_alignment = 1

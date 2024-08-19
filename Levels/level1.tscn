@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cq0kny86uh14m" path="res://Textures/Planets/Planet3.png" id="4_h737j"]
 
 [node name="Level" type="Node2D"]
-metadata/level_id = 0
+metadata/level_id = 1
 
 [node name="Player" parent="." instance=ExtResource("1_c30l8")]
 

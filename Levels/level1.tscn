@@ -8,6 +8,7 @@
 
 [node name="Level" type="Node2D"]
 metadata/level_id = 1
+metadata/has_timer = true
 
 [node name="Player" parent="." instance=ExtResource("1_c30l8")]
 

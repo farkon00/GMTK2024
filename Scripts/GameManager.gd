@@ -26,7 +26,7 @@ func initialize_level(id: int):
 		current_level.free()
 	current_level = levels[id].instantiate()
 	$"..".add_child(current_level)
-	set_active($"TimerUI", true)
+	set_active($"TimerUI", current_level.get_meta("has_timer"))
 	is_game_stopped = false
 	currently_changing = null
 	level_timer_ms = 0
@@ -81,7 +81,8 @@ func _input(event):
 
 func win():
 	is_game_stopped = true
-	finish_time_label.text = get_timer_string()
+	if $"../Level".get_meta("has_timer"):
+		finish_time_label.text = get_timer_string()
 	set_active($"YouWinUI", true)
 	set_active($"TimerUI", false)
 

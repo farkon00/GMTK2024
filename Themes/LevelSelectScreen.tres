@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cvftj2ibeautp"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cvftj2ibeautp"]
+
+[ext_resource type="FontFile" uid="uid://cjrm3yts0o36t" path="res://Textures/DefaultFont.ttf" id="1_o52vl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dprx0"]
 bg_color = Color(0.152941, 0.152941, 0.152941, 1)
@@ -26,6 +28,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [resource]
+default_font = ExtResource("1_o52vl")
 default_font_size = 50
 Button/styles/focus = SubResource("StyleBoxFlat_dprx0")
 Button/styles/hover = SubResource("StyleBoxFlat_07nl8")

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="3_fph74"]
 
 [node name="Level" type="Node2D"]
-metadata/level_id = 1
+metadata/level_id = 2
 
 [node name="Player" parent="." instance=ExtResource("1_1h0ng")]
 position = Vector2(214, 359)

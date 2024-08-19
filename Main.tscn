@@ -22,6 +22,7 @@ timer_label = NodePath("TimerUI/HBoxContainer/TimerLabel")
 finish_time_label = NodePath("YouWinUI/Panel/VBoxContainer/FinishTimeLabel")
 
 [node name="TextureRect" type="TextureRect" parent="GameManager"]
+z_index = -1
 texture_filter = 3
 offset_right = 1152.0
 offset_bottom = 648.0

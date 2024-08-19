@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/TutorialManager.gd" id="4_kea3s"]
 [ext_resource type="Theme" uid="uid://b7s4pdn6omblw" path="res://Themes/TutorialLabel.tres" id="5_nsmdf"]
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 metadata/level_id = 0
 metadata/has_timer = false
 

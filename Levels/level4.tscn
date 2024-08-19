@@ -59,10 +59,28 @@ laser_speed = 1000.0
 
 [node name="EnemyShip" parent="EnemyShips" instance=ExtResource("5_cpevh")]
 position = Vector2(878, 210)
+initial_hearts_count = 2
+
+[node name="CollisionShape2D" parent="EnemyShips/EnemyShip" index="0"]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" parent="EnemyShips/EnemyShip" index="1"]
+scale = Vector2(2, 2)
+
+[node name="Area2D" parent="EnemyShips/EnemyShip" index="3"]
 scale = Vector2(2, 2)
 
 [node name="EnemyShip2" parent="EnemyShips" instance=ExtResource("5_cpevh")]
 position = Vector2(878, 447)
+initial_hearts_count = 2
+
+[node name="CollisionShape2D" parent="EnemyShips/EnemyShip2" index="0"]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" parent="EnemyShips/EnemyShip2" index="1"]
+scale = Vector2(2, 2)
+
+[node name="Area2D" parent="EnemyShips/EnemyShip2" index="3"]
 scale = Vector2(2, 2)
 
 [node name="MeteorideWall" parent="." instance=ExtResource("3_eo52r")]
@@ -161,6 +179,8 @@ shape = SubResource("RectangleShape2D_sl2sd")
 position = Vector2(30, 60)
 shape = SubResource("RectangleShape2D_myvtk")
 
+[editable path="EnemyShips/EnemyShip"]
+[editable path="EnemyShips/EnemyShip2"]
 [editable path="Portal2"]
 [editable path="Portal3"]
 [editable path="Portal4"]

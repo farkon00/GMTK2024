@@ -4,6 +4,7 @@ extends Node
 @export var levels: Array[PackedScene] = []
 @export var level_box: Node
 @export var timer_label: Label
+@export var finish_time_label: Label
 
 static var instance: GameManager
 
@@ -85,6 +86,7 @@ func _input(event):
 func win():
 	is_game_stopped = true
 	has_won = true
+	finish_time_label.text = get_timer_string()
 	set_active($"YouWinUI", true)
 	set_active($"TimerUI", false)
 

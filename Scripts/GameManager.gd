@@ -12,8 +12,6 @@ var is_game_stopped: bool = true
 var level_timer_ms: float = 0 
 var currently_changing: Planet = null
 var enemy_ships: Array[EnemyShip] = []
-var time_since_victory: float = 0
-var has_won: bool = false
 
 func _init():
 	instance = self
@@ -30,8 +28,6 @@ func initialize_level(id: int):
 	$"..".add_child(current_level)
 	set_active($"TimerUI", true)
 	is_game_stopped = false
-	has_won = false
-	time_since_victory = 0
 	currently_changing = null
 	level_timer_ms = 0
 
@@ -85,7 +81,6 @@ func _input(event):
 
 func win():
 	is_game_stopped = true
-	has_won = true
 	finish_time_label.text = get_timer_string()
 	set_active($"YouWinUI", true)
 	set_active($"TimerUI", false)
@@ -109,18 +104,3 @@ func get_timer_string():
 func _process(delta: float):
 	level_timer_ms += delta * 1000
 	timer_label.text = get_timer_string()
-
-	if has_won:
-		time_since_victory += delta
-	if time_since_victory >= 5:
-		time_since_victory = 0
-		var current_level = $"../Level"
-		if current_level == null:
-			return
-		var new_level_id = current_level.get_meta("level_id") + 1
-		if new_level_id == levels.size():
-			# TODO: congrats gg screen
-			pass
-		else:
-			set_active($"YouWinUI", false)
-			initialize_level(new_level_id)

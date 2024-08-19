@@ -1,0 +1,190 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdhe0ndi5n6bi"]
+
+[ext_resource type="PackedScene" uid="uid://c3y6cnuxa8eli" path="res://Nodes/player.tscn" id="1_26n6u"]
+[ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_trybr"]
+[ext_resource type="PackedScene" uid="uid://byk07tt533hum" path="res://Nodes/meteoride_wall.tscn" id="3_eo52r"]
+[ext_resource type="PackedScene" uid="uid://c8tds7dtmak5k" path="res://Nodes/portal.tscn" id="4_rsokv"]
+[ext_resource type="PackedScene" uid="uid://dfc3dbdyunhqd" path="res://Nodes/enemy_ship.tscn" id="5_cpevh"]
+[ext_resource type="Texture2D" uid="uid://d2wpkwxsffiqk" path="res://Textures/Portal/Portal2.png" id="5_he43u"]
+[ext_resource type="Texture2D" uid="uid://dwvxlvm43turn" path="res://Textures/Portal/Portal3.png" id="6_oujov"]
+[ext_resource type="Texture2D" uid="uid://cr68dmkfu771t" path="res://Textures/Portal/Portal4.png" id="7_1183e"]
+
+[sub_resource type="Curve2D" id="Curve2D_crgqu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 351, -25, 0, 0, 0, 0, 351, 718)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl2sd"]
+size = Vector2(20, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myvtk"]
+size = Vector2(20, 120)
+
+[node name="Level" type="Node2D"]
+metadata/level_id = 1
+metadata/has_timer = true
+
+[node name="Player" parent="." instance=ExtResource("1_26n6u")]
+position = Vector2(174, 331)
+
+[node name="Planets" type="Node" parent="."]
+
+[node name="Planet" parent="Planets" instance=ExtResource("2_trybr")]
+position = Vector2(41, 328)
+mass = 100.0
+mass_max = 500.0
+
+[node name="Planet2" parent="Planets" instance=ExtResource("2_trybr")]
+position = Vector2(154, 614)
+
+[node name="Planet3" parent="Planets" instance=ExtResource("2_trybr")]
+position = Vector2(153, 51)
+
+[node name="Planet4" parent="Planets" instance=ExtResource("2_trybr")]
+position = Vector2(391, 26)
+density = 160.0
+mass = 500.0
+mass_max = 5000.0
+laser_speed = 1000.0
+
+[node name="Planet5" parent="Planets" instance=ExtResource("2_trybr")]
+position = Vector2(391, 626)
+density = 160.0
+mass = 500.0
+mass_max = 5000.0
+laser_speed = 1000.0
+
+[node name="EnemyShips" type="Node" parent="."]
+
+[node name="EnemyShip" parent="EnemyShips" instance=ExtResource("5_cpevh")]
+position = Vector2(878, 210)
+initial_hearts_count = 2
+
+[node name="CollisionShape2D" parent="EnemyShips/EnemyShip" index="0"]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" parent="EnemyShips/EnemyShip" index="1"]
+scale = Vector2(2, 2)
+
+[node name="Area2D" parent="EnemyShips/EnemyShip" index="3"]
+scale = Vector2(2, 2)
+
+[node name="EnemyShip2" parent="EnemyShips" instance=ExtResource("5_cpevh")]
+position = Vector2(878, 447)
+initial_hearts_count = 2
+
+[node name="CollisionShape2D" parent="EnemyShips/EnemyShip2" index="0"]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" parent="EnemyShips/EnemyShip2" index="1"]
+scale = Vector2(2, 2)
+
+[node name="Area2D" parent="EnemyShips/EnemyShip2" index="3"]
+scale = Vector2(2, 2)
+
+[node name="MeteorideWall" parent="." instance=ExtResource("3_eo52r")]
+position = Vector2(213, -28)
+curve = SubResource("Curve2D_crgqu")
+
+[node name="Portal" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("4_rsokv")]
+position = Vector2(626, 142)
+connects_to = NodePath("../Portal6")
+
+[node name="Portal2" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("4_rsokv")]
+position = Vector2(626, 510)
+connects_to = NodePath("../Portal5")
+
+[node name="Sprite2D" parent="Portal2" index="0"]
+texture = ExtResource("5_he43u")
+
+[node name="Portal3" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("4_rsokv")]
+position = Vector2(62, 172)
+connects_to = NodePath("../Portal7")
+
+[node name="Sprite2D" parent="Portal3" index="0"]
+texture = ExtResource("6_oujov")
+
+[node name="Portal4" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("4_rsokv")]
+position = Vector2(62, 505)
+connects_to = NodePath("../Portal8")
+
+[node name="Sprite2D" parent="Portal4" index="0"]
+texture = ExtResource("7_1183e")
+
+[node name="Portal5" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("4_rsokv")]
+position = Vector2(514, 114)
+connects_to = NodePath("../Portal2")
+
+[node name="Sprite2D" parent="Portal5" index="0"]
+position = Vector2(-16, 1)
+texture = ExtResource("5_he43u")
+flip_h = true
+
+[node name="CollisionShape2D" parent="Portal5/TeleportationArea" index="0"]
+position = Vector2(10, 60)
+shape = SubResource("RectangleShape2D_sl2sd")
+
+[node name="CollisionShape2D" parent="Portal5/Area2D" index="0"]
+position = Vector2(30, 60)
+shape = SubResource("RectangleShape2D_myvtk")
+
+[node name="Portal6" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("4_rsokv")]
+position = Vector2(514, 531)
+connects_to = NodePath("../Portal")
+
+[node name="Sprite2D" parent="Portal6" index="0"]
+position = Vector2(-16, 1)
+flip_h = true
+
+[node name="CollisionShape2D" parent="Portal6/TeleportationArea" index="0"]
+position = Vector2(10, 60)
+shape = SubResource("RectangleShape2D_sl2sd")
+
+[node name="CollisionShape2D" parent="Portal6/Area2D" index="0"]
+position = Vector2(30, 60)
+shape = SubResource("RectangleShape2D_myvtk")
+
+[node name="Portal7" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("4_rsokv")]
+position = Vector2(1064, 205)
+connects_to = NodePath("../Portal3")
+
+[node name="Sprite2D" parent="Portal7" index="0"]
+position = Vector2(-16, 1)
+texture = ExtResource("6_oujov")
+flip_h = true
+
+[node name="CollisionShape2D" parent="Portal7/TeleportationArea" index="0"]
+position = Vector2(10, 60)
+shape = SubResource("RectangleShape2D_sl2sd")
+
+[node name="CollisionShape2D" parent="Portal7/Area2D" index="0"]
+position = Vector2(30, 60)
+shape = SubResource("RectangleShape2D_myvtk")
+
+[node name="Portal8" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("4_rsokv")]
+position = Vector2(1064, 444)
+connects_to = NodePath("../Portal4")
+
+[node name="Sprite2D" parent="Portal8" index="0"]
+position = Vector2(-16, 1)
+texture = ExtResource("7_1183e")
+flip_h = true
+
+[node name="CollisionShape2D" parent="Portal8/TeleportationArea" index="0"]
+position = Vector2(10, 60)
+shape = SubResource("RectangleShape2D_sl2sd")
+
+[node name="CollisionShape2D" parent="Portal8/Area2D" index="0"]
+position = Vector2(30, 60)
+shape = SubResource("RectangleShape2D_myvtk")
+
+[editable path="EnemyShips/EnemyShip"]
+[editable path="EnemyShips/EnemyShip2"]
+[editable path="Portal2"]
+[editable path="Portal3"]
+[editable path="Portal4"]
+[editable path="Portal5"]
+[editable path="Portal6"]
+[editable path="Portal7"]
+[editable path="Portal8"]

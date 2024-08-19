@@ -18,12 +18,10 @@ process_mode = 4
 
 [node name="Planet2" parent="Planets" instance=ExtResource("2_3qd17")]
 position = Vector2(1008, 334)
-laser_speed = 700.0
 
 [node name="ShowcasePlanet" parent="Planets" instance=ExtResource("2_3qd17")]
 position = Vector2(497, 164)
 mass = 800.0
-laser_speed = 700.0
 
 [node name="EnemyShips" type="Node" parent="."]
 process_mode = 4

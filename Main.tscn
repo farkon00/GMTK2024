@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=11 format=3 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="PackedScene" uid="uid://bkclfsio7no2j" path="res://Levels/tutorial.tscn" id="2_stkyg"]
 [ext_resource type="PackedScene" uid="uid://hjk2yrp438kv" path="res://Levels/level1.tscn" id="2_vivy5"]
 [ext_resource type="PackedScene" uid="uid://dbagmxdk5mime" path="res://Levels/level2.tscn" id="3_4e7he"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
 [ext_resource type="Theme" uid="uid://cvftj2ibeautp" path="res://Themes/LevelSelectScreen.tres" id="4_xl53m"]
+[ext_resource type="PackedScene" uid="uid://0w84ms8usmem" path="res://Levels/level3.tscn" id="5_jqi0b"]
 [ext_resource type="FontFile" uid="uid://cjrm3yts0o36t" path="res://Textures/DefaultFont.ttf" id="6_gj6jp"]
+[ext_resource type="PackedScene" uid="uid://bdhe0ndi5n6bi" path="res://Levels/level4.tscn" id="6_w8hve"]
 [ext_resource type="Texture2D" uid="uid://clp1l0l7m8jfy" path="res://Textures/BG/BG.png" id="7_7ocap"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6bjm"]
@@ -22,7 +24,7 @@ loop_end = 29056
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("level_box", "timer_label", "finish_time_label", "laser_sound")]
 process_priority = 2
 script = ExtResource("4_0dhc0")
-levels = Array[PackedScene]([ExtResource("2_stkyg"), ExtResource("2_vivy5"), ExtResource("3_4e7he")])
+levels = Array[PackedScene]([ExtResource("2_stkyg"), ExtResource("2_vivy5"), ExtResource("3_4e7he"), ExtResource("5_jqi0b"), ExtResource("6_w8hve")])
 level_box = NodePath("LevelSelectUI/Panel/Control/LevelBox")
 timer_label = NodePath("TimerUI/HBoxContainer/TimerLabel")
 finish_time_label = NodePath("YouWinUI/Panel/VBoxContainer/FinishTimeLabel")
@@ -172,6 +174,18 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme = ExtResource("4_xl53m")
 text = "3"
+
+[node name="Level4" type="Button" parent="GameManager/LevelSelectUI/Panel/Control/LevelBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("4_xl53m")
+text = "4"
+
+[node name="Level5" type="Button" parent="GameManager/LevelSelectUI/Panel/Control/LevelBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("4_xl53m")
+text = "5"
 
 [node name="TimerUI" type="Control" parent="GameManager"]
 visible = false

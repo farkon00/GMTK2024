@@ -18,7 +18,6 @@ position = Vector2(214, 359)
 [node name="Planet" parent="Planets" instance=ExtResource("3_fph74")]
 position = Vector2(508, 440)
 mass = 400.0
-laser_speed = 700.0
 
 [node name="Sprite2D" parent="Planets/Planet" index="1"]
 texture = ExtResource("3_fa1rk")
@@ -26,7 +25,6 @@ texture = ExtResource("3_fa1rk")
 [node name="Planet2" parent="Planets" instance=ExtResource("3_fph74")]
 position = Vector2(502, 91)
 mass = 1600.0
-laser_speed = 700.0
 
 [node name="Sprite2D" parent="Planets/Planet2" index="1"]
 texture = ExtResource("4_m050o")
@@ -34,12 +32,10 @@ texture = ExtResource("4_m050o")
 [node name="Planet3" parent="Planets" instance=ExtResource("3_fph74")]
 position = Vector2(618, 609)
 mass = 500.0
-laser_speed = 700.0
 
 [node name="Planet4" parent="Planets" instance=ExtResource("3_fph74")]
 position = Vector2(402, 246)
 mass = 1600.0
-laser_speed = 700.0
 
 [node name="EnemyShips" type="Node" parent="."]
 

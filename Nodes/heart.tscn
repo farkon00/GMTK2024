@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cq5ff16ev20k7" path="res://Textures/Heart/Heart1.png" id="1_m3fyx"]
 
 [node name="Heart" type="TextureRect"]
+z_index = 6
 texture_filter = 3
 texture = ExtResource("1_m3fyx")
 expand_mode = 2

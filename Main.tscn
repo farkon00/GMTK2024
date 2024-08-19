@@ -4,18 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://hjk2yrp438kv" path="res://Levels/level1.tscn" id="2_vivy5"]
 [ext_resource type="PackedScene" uid="uid://dbagmxdk5mime" path="res://Levels/level2.tscn" id="3_4e7he"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_0dhc0"]
+[ext_resource type="Theme" uid="uid://cvftj2ibeautp" path="res://Themes/LevelSelectScreen.tres" id="4_xl53m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6bjm"]
 font_size = 90
 
 [node name="Node2D" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("level_box")]
+process_priority = 2
 script = ExtResource("4_0dhc0")
 levels = Array[PackedScene]([ExtResource("2_stkyg"), ExtResource("2_vivy5"), ExtResource("3_4e7he")])
+level_box = NodePath("LevelSelectUI/Panel/Control/LevelBox")
 
 [node name="GameOverUI" type="Control" parent="GameManager"]
-process_mode = 4
 visible = false
 z_index = 100
 layout_mode = 3
@@ -23,31 +25,37 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="PanelContainer" type="PanelContainer" parent="GameManager/GameOverUI"]
+[node name="Panel" type="Panel" parent="GameManager/GameOverUI"]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-scale = Vector2(0.600009, 0.60001)
+offset_right = 1152.0
+offset_bottom = 648.0
 
-[node name="ColorRect" type="ColorRect" parent="GameManager/GameOverUI/PanelContainer"]
-z_index = -1
-layout_mode = 2
-color = Color(0, 0, 0, 0.784314)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/GameOverUI/PanelContainer"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/GameOverUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+alignment = 1
 
-[node name="GameOverLabel" type="Label" parent="GameManager/GameOverUI/PanelContainer/VBoxContainer"]
+[node name="GameOverLabel" type="Label" parent="GameManager/GameOverUI/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Game Over"
 label_settings = SubResource("LabelSettings_n6bjm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LevelSelectButton" type="Button" parent="GameManager/GameOverUI/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_xl53m")
+text = "Level Select"
+
 [node name="YouWinUI" type="Control" parent="GameManager"]
-process_mode = 4
 visible = false
 z_index = 100
 layout_mode = 3
@@ -55,27 +63,88 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="PanelContainer" type="PanelContainer" parent="GameManager/YouWinUI"]
+[node name="Panel" type="Panel" parent="GameManager/YouWinUI"]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-scale = Vector2(0.600009, 0.60001)
+offset_right = 1152.0
+offset_bottom = 648.0
 
-[node name="ColorRect" type="ColorRect" parent="GameManager/YouWinUI/PanelContainer"]
-z_index = -1
-layout_mode = 2
-color = Color(0, 0, 0, 0.784314)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/YouWinUI/PanelContainer"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/YouWinUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+alignment = 1
 
-[node name="GameOverLabel" type="Label" parent="GameManager/YouWinUI/PanelContainer/VBoxContainer"]
+[node name="YouWinLabel" type="Label" parent="GameManager/YouWinUI/Panel/VBoxContainer"]
 layout_mode = 2
-text = "You win"
+text = "You Win"
 label_settings = SubResource("LabelSettings_n6bjm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Level" parent="." instance=ExtResource("2_stkyg")]
+[node name="LevelSelectButton" type="Button" parent="GameManager/YouWinUI/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_xl53m")
+text = "Level Select"
+
+[node name="LevelSelectUI" type="Control" parent="GameManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="GameManager/LevelSelectUI"]
+z_index = 100
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -274.0
+offset_right = 476.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="GameManager/LevelSelectUI/Panel"]
+anchors_preset = 0
+offset_top = 50.0
+offset_right = 40.0
+offset_bottom = 90.0
+
+[node name="LevelBox" type="HBoxContainer" parent="GameManager/LevelSelectUI/Panel/Control"]
+layout_mode = 2
+offset_right = 952.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Level1" type="Button" parent="GameManager/LevelSelectUI/Panel/Control/LevelBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("4_xl53m")
+text = "1"
+
+[node name="Level2" type="Button" parent="GameManager/LevelSelectUI/Panel/Control/LevelBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("4_xl53m")
+text = "2"
+
+[node name="Level3" type="Button" parent="GameManager/LevelSelectUI/Panel/Control/LevelBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("4_xl53m")
+text = "3"
+
+[connection signal="pressed" from="GameManager/GameOverUI/Panel/VBoxContainer/LevelSelectButton" to="GameManager" method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="GameManager/YouWinUI/Panel/VBoxContainer/LevelSelectButton" to="GameManager" method="_on_level_select_button_pressed"]

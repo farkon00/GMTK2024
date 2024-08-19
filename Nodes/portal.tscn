@@ -18,14 +18,15 @@ script = ExtResource("1_reply")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
-position = Vector2(34, 59)
+position = Vector2(9, 1)
 texture = ExtResource("2_30mwf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 60)
+position = Vector2(-5, 2)
 shape = SubResource("RectangleShape2D_648aq")
 
 [node name="TeleportationArea" type="Area2D" parent="."]
+position = Vector2(-25, -58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportationArea"]
 position = Vector2(30, 60)
@@ -34,6 +35,7 @@ debug_color = Color(0.987511, 0, 0.312228, 0.42)
 
 [node name="Area2D" type="Area2D" parent="."]
 process_priority = 1
+position = Vector2(-25, -58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(10, 60)

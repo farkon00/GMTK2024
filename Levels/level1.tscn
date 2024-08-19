@@ -17,12 +17,10 @@ metadata/has_timer = true
 [node name="Planet" parent="Planets" instance=ExtResource("3_lmj3f")]
 position = Vector2(499, 302)
 mass = 400.0
-laser_speed = 700.0
 
 [node name="Planet2" parent="Planets" instance=ExtResource("3_lmj3f")]
 position = Vector2(678, 111)
 mass = 1600.0
-laser_speed = 700.0
 
 [node name="Sprite2D" parent="Planets/Planet2" index="1"]
 texture = ExtResource("3_3f363")
@@ -30,7 +28,6 @@ texture = ExtResource("3_3f363")
 [node name="Planet3" parent="Planets" instance=ExtResource("3_lmj3f")]
 position = Vector2(550, 592)
 mass = 500.0
-laser_speed = 700.0
 
 [node name="Sprite2D" parent="Planets/Planet3" index="1"]
 texture = ExtResource("4_h737j")

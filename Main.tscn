@@ -46,6 +46,7 @@ alignment = 1
 
 [node name="GameOverLabel" type="Label" parent="GameManager/GameOverUI/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_gj6jp")
 text = "Game Over"
 label_settings = SubResource("LabelSettings_n6bjm")
 horizontal_alignment = 1
@@ -84,6 +85,7 @@ alignment = 1
 
 [node name="YouWinLabel" type="Label" parent="GameManager/YouWinUI/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_gj6jp")
 text = "You Win"
 label_settings = SubResource("LabelSettings_n6bjm")
 horizontal_alignment = 1

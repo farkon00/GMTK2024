@@ -19,7 +19,6 @@ position = Vector2(353, 125)
 [node name="Planet1" parent="Planets" instance=ExtResource("2_2vefl")]
 position = Vector2(277, 326)
 mass = 1600.0
-laser_speed = 700.0
 
 [node name="Sprite2D" parent="Planets/Planet1" index="1"]
 texture = ExtResource("3_etyvg")
@@ -27,7 +26,6 @@ texture = ExtResource("3_etyvg")
 [node name="Planet2" parent="Planets" instance=ExtResource("2_2vefl")]
 position = Vector2(483, 589)
 mass = 500.0
-laser_speed = 700.0
 
 [node name="Sprite2D" parent="Planets/Planet2" index="1"]
 texture = ExtResource("4_xbopm")

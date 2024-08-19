@@ -8,6 +8,7 @@
 
 [node name="Level" type="Node2D"]
 metadata/level_id = 0
+metadata/has_timer = false
 
 [node name="Player" parent="." instance=ExtResource("1_c4abv")]
 position = Vector2(50, 313)

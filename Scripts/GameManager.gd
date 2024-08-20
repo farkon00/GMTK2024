@@ -40,15 +40,18 @@ func initialize_level(id: int):
 			enemy_ships.append(child)
 
 func level_selected(id: int):
+	$"BackgroundMusic".play_level()
 	set_active($"LevelSelectUI", false)
 	initialize_level(id)
 
 func _on_level_select_button_pressed():
+	$"BackgroundMusic".play_menu()
 	set_active($"YouWinUI", false)
 	set_active($"GameOverUI", false)
 	set_active($"LevelSelectUI", true)
 
 func _ready():
+	$"BackgroundMusic".play_menu()
 	set_active($"YouWinUI", false)
 	set_active($"GameOverUI", false)
 
@@ -108,6 +111,7 @@ func get_timer_string():
 func _process(delta: float):
 	if !is_game_stopped && Input.is_action_just_pressed("QuitLevel"):
 		is_game_stopped = true
+		$"BackgroundMusic".play_menu()
 		set_active($"LevelSelectUI", true)
 		set_active($"TimerUI", false)
 

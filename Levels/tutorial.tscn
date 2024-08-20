@@ -42,7 +42,6 @@ offset_right = 1152.0
 offset_bottom = 651.0
 
 [node name="WelcomeLabel" type="Label" parent="TutorialManager/Panel"]
-visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1
@@ -79,6 +78,7 @@ text = "Here is your ship, you should protect it"
 horizontal_alignment = 1
 
 [node name="EnemyShipLabel" type="Label" parent="TutorialManager/Panel"]
+visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1

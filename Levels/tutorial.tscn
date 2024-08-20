@@ -42,6 +42,7 @@ offset_right = 1152.0
 offset_bottom = 651.0
 
 [node name="WelcomeLabel" type="Label" parent="TutorialManager/Panel"]
+visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1
@@ -78,7 +79,6 @@ text = "Here is your ship, you should protect it"
 horizontal_alignment = 1
 
 [node name="EnemyShipLabel" type="Label" parent="TutorialManager/Panel"]
-visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1
@@ -94,7 +94,8 @@ theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "Here is an enemy ship.
 It will shoot missiles at you.
-Your goal is to kill all enemies."
+Your goal is to kill all the enemies.
+Use their missiles against them."
 horizontal_alignment = 1
 
 [node name="EnemyShipLabel2" type="Label" parent="TutorialManager/Panel"]

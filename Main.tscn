@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://60x0tpw1kfl1"]
+[gd_scene load_steps=13 format=4 uid="uid://60x0tpw1kfl1"]
 
 [ext_resource type="PackedScene" uid="uid://bkclfsio7no2j" path="res://Levels/tutorial.tscn" id="2_vcs4h"]
 [ext_resource type="PackedScene" uid="uid://hjk2yrp438kv" path="res://Levels/level1.tscn" id="3_a6ftk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" path="res://Levels/level4.tscn" id="6_1carg"]
 [ext_resource type="FontFile" uid="uid://cjrm3yts0o36t" path="res://Textures/DefaultFont.ttf" id="6_gj6jp"]
 [ext_resource type="Texture2D" uid="uid://clp1l0l7m8jfy" path="res://Textures/BG/BG.png" id="7_7ocap"]
+[ext_resource type="Script" path="res://Scripts/BackgroundMusic.gd" id="11_0l4qx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6bjm"]
 font_size = 90
@@ -248,6 +249,9 @@ text = "Play"
 [node name="LaserSound" type="AudioStreamPlayer" parent="GameManager"]
 stream = SubResource("AudioStreamMP3_5tp3f")
 parameters/looping = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="GameManager"]
+script = ExtResource("11_0l4qx")
 
 [connection signal="pressed" from="GameManager/GameOverUI/Panel/VBoxContainer/LevelSelectButton" to="GameManager" method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="GameManager/YouWinUI/Panel/VBoxContainer/LevelSelectButton" to="GameManager" method="_on_level_select_button_pressed"]

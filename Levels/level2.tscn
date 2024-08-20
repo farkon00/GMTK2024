@@ -85,7 +85,7 @@ offset_bottom = 179.638
 theme = ExtResource("8_eqlue")
 theme_override_font_sizes/font_size = 40
 text = "This level contains portals.
-Portals with the same color are connected."
+Portals of the same color are connected."
 horizontal_alignment = 1
 
 [node name="ContinueLabel" type="Label" parent="PortalTutorialManager/Panel"]

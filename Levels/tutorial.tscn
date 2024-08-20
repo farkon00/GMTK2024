@@ -93,7 +93,8 @@ offset_bottom = 131.638
 theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
 text = "Here is an enemy ship.
-It will shoot missiles at you."
+It will shoot missiles at you.
+Your goal is to kill all enemies."
 horizontal_alignment = 1
 
 [node name="EnemyShipLabel2" type="Label" parent="TutorialManager/Panel"]

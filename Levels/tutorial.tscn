@@ -42,7 +42,6 @@ offset_right = 1152.0
 offset_bottom = 651.0
 
 [node name="WelcomeLabel" type="Label" parent="TutorialManager/Panel"]
-visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1
@@ -155,6 +154,7 @@ This makes planet smaller."
 horizontal_alignment = 1
 
 [node name="GoodLuck" type="Label" parent="TutorialManager/Panel"]
+visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1
@@ -173,6 +173,7 @@ text = "These are all the basics, good luck.
 horizontal_alignment = 1
 
 [node name="ProTip" type="Label" parent="TutorialManager/Panel"]
+visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1

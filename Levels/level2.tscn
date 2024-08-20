@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbagmxdk5mime"]
+[gd_scene load_steps=9 format=3 uid="uid://dbagmxdk5mime"]
 
 [ext_resource type="PackedScene" uid="uid://c3y6cnuxa8eli" path="res://Nodes/player.tscn" id="1_8aiaj"]
 [ext_resource type="PackedScene" uid="uid://bsbnxtfkejl3e" path="res://Nodes/planet.tscn" id="2_2vefl"]
@@ -6,15 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://cq0kny86uh14m" path="res://Textures/Planets/Planet3.png" id="4_xbopm"]
 [ext_resource type="PackedScene" uid="uid://dfc3dbdyunhqd" path="res://Nodes/enemy_ship.tscn" id="5_r2gr1"]
 [ext_resource type="PackedScene" uid="uid://c8tds7dtmak5k" path="res://Nodes/portal.tscn" id="6_rgrgi"]
+[ext_resource type="Script" path="res://Scripts/PortalTutorialManager.gd" id="7_of5gb"]
+[ext_resource type="Theme" uid="uid://b7s4pdn6omblw" path="res://Themes/TutorialLabel.tres" id="8_eqlue"]
 
 [node name="Level" type="Node2D"]
 metadata/level_id = 2
 metadata/has_timer = true
 
 [node name="Player" parent="." instance=ExtResource("1_8aiaj")]
+process_mode = 4
 position = Vector2(353, 125)
 
 [node name="Planets" type="Node" parent="."]
+process_mode = 4
 
 [node name="Planet1" parent="Planets" instance=ExtResource("2_2vefl")]
 position = Vector2(277, 326)
@@ -31,16 +35,19 @@ mass = 500.0
 texture = ExtResource("4_xbopm")
 
 [node name="EnemyShips" type="Node" parent="."]
+process_mode = 4
 
 [node name="EnemyShip" parent="EnemyShips" instance=ExtResource("5_r2gr1")]
 position = Vector2(900, 354)
 
 [node name="Portal" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("6_rgrgi")]
+z_index = 11
 position = Vector2(210, 477)
 rotation = -0.586144
 connects_to = NodePath("../Portal2")
 
 [node name="Portal2" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("6_rgrgi")]
+z_index = 11
 position = Vector2(1072, 206)
 rotation = -0.586144
 connects_to = NodePath("../Portal")
@@ -54,6 +61,50 @@ position = Vector2(9.888, 60)
 
 [node name="CollisionShape2D" parent="Portal2/Area2D" index="0"]
 position = Vector2(29.9951, 59.9999)
+
+[node name="PortalTutorialManager" type="Node" parent="."]
+script = ExtResource("7_of5gb")
+
+[node name="Panel" type="Panel" parent="PortalTutorialManager"]
+z_index = 10
+offset_right = 1152.0
+offset_bottom = 651.0
+
+[node name="WelcomeLabel" type="Label" parent="PortalTutorialManager/Panel"]
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -127.024
+offset_top = -37.362
+offset_right = 1029.98
+offset_bottom = 179.638
+theme = ExtResource("8_eqlue")
+theme_override_font_sizes/font_size = 40
+text = "This level contains portals.
+Portals with the same color are connected."
+horizontal_alignment = 1
+
+[node name="ContinueLabel" type="Label" parent="PortalTutorialManager/Panel"]
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -127.024
+offset_top = 529.638
+offset_right = 1029.98
+offset_bottom = 610.638
+theme = ExtResource("8_eqlue")
+theme_override_colors/font_color = Color(0.522724, 0.522724, 0.522724, 1)
+theme_override_font_sizes/font_size = 40
+text = "<Click anywhere to continue>"
+horizontal_alignment = 1
 
 [editable path="Planets/Planet1"]
 [editable path="Planets/Planet2"]

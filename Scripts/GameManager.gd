@@ -12,6 +12,7 @@ static var instance: GameManager
 
 var is_game_stopped: bool = true
 var level_timer_ms: float = 0 
+var timer_paused: bool = false
 var currently_changing: Planet = null
 var enemy_ships: Array[EnemyShip] = []
 enum states {MainMenu, LevelSelect}
@@ -129,7 +130,8 @@ func _process(delta: float):
 	if is_game_stopped && laser_sound.playing:
 		laser_sound.stop()
 
-	level_timer_ms += delta * 1000
+	if !timer_paused:
+		level_timer_ms += delta * 1000
 	timer_label.text = get_timer_string()
 	if currently_changing != null:
 		if !laser_sound.playing:

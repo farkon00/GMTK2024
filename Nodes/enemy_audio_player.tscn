@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b70wosgtqbejf"]
+[gd_scene load_steps=3 format=3 uid="uid://b70wosgtqbejf"]
 
 [ext_resource type="AudioStream" uid="uid://dqi4a41c7w7y7" path="res://Sounds/EnemyExplosion.wav" id="1_l5umg"]
+[ext_resource type="Script" path="res://Scripts/AudioDestructor.gd" id="2_qr2qv"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_l5umg")
+script = ExtResource("2_qr2qv")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

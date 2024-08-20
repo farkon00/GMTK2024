@@ -1,8 +1,4 @@
 extends Node
 
-
-func _ready() -> void:
-	connect("finished", destroyer)
-
-func destroyer():
+func _on_finished():
 	queue_free()

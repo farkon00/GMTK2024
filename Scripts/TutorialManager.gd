@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	if GameManager.instance.is_game_stopped:
 		queue_free()
 	time += delta
-	if state == states.EnemyShip2 && $"../Missile" == null:
+	if state == states.EnemyShip2 && get_node_or_null("../Missile") == null:
 		$"Panel/ContinueLabel".visible = true
 	elif state == states.Planets && $"../Planets/ShowcasePlanet".mass > 800:
 		$"Panel/ContinueLabel".visible = true

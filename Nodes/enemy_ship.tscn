@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfc3dbdyunhqd"]
+[gd_scene load_steps=7 format=3 uid="uid://dfc3dbdyunhqd"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyShip.gd" id="1_flxn0"]
 [ext_resource type="SpriteFrames" uid="uid://qye1wuwg5k82" path="res://Textures/EnemyShip/enemy_ship_frames.tres" id="2_b246u"]
 [ext_resource type="AudioStream" uid="uid://ddk1hwu4qa4ml" path="res://Sounds/EnemyHit.wav" id="3_501d2"]
+[ext_resource type="Script" path="res://Scripts/SFXVolumeSetter.gd" id="4_punqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt07k"]
 size = Vector2(96, 31)
@@ -58,6 +59,7 @@ shape = SubResource("RectangleShape2D_00k54")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_501d2")
+script = ExtResource("4_punqh")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

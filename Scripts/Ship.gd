@@ -23,4 +23,5 @@ func damage():
     if hearts.is_empty():
         die()
     else:
+        GameManager.instance.sync_sfx_volume($"HitSound")
         $"HitSound".play()

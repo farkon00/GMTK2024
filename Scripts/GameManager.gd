@@ -14,6 +14,17 @@ var is_game_stopped: bool = true
 var level_timer_ms: float = 0 
 var currently_changing: Planet = null
 var enemy_ships: Array[EnemyShip] = []
+enum states {MainMenu, LevelSelect}
+var state_behind_settings = states.MainMenu
+
+var sfx_volume: float = 50
+var music_volume: float = 50
+
+var mouse_on_sfx = false
+var mouse_on_music = false
+
+var currently_changing_sfx = false
+var currently_changing_music = false
 
 func _init():
 	instance = self
@@ -122,10 +133,64 @@ func _process(delta: float):
 	timer_label.text = get_timer_string()
 	if currently_changing != null:
 		if !laser_sound.playing:
+			sync_sfx_volume(laser_sound)
 			laser_sound.play()
 	else:
 		laser_sound.stop()
 
+	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		currently_changing_sfx = false
+		currently_changing_music = false
+
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if (mouse_on_sfx || currently_changing_sfx) && !currently_changing_music:
+			sfx_volume = 100 * $"SettingsUI/Panel/SFX/ProgressBar".get_local_mouse_position().x / $"SettingsUI/Panel/SFX/ProgressBar".size.x
+			sfx_volume = clamp(sfx_volume, 0, 100)
+			$"SettingsUI/Panel/SFX/ProgressBar".value = sfx_volume
+			currently_changing_sfx = true
+		if (mouse_on_music || currently_changing_music) && !currently_changing_sfx:
+			music_volume = 100 * $"SettingsUI/Panel/Music/ProgressBar".get_local_mouse_position().x / $"SettingsUI/Panel/Music/ProgressBar".size.x
+			music_volume = clamp(music_volume, 0, 100)
+			$"SettingsUI/Panel/Music/ProgressBar".value = music_volume
+			currently_changing_music = true
+
 func _on_play_button_pressed():
 	set_active($"MainMenuUI", false)
 	set_active($"LevelSelectUI", true)
+	state_behind_settings = states.LevelSelect
+
+
+func _on_settings_button_pressed() -> void:
+	if state_behind_settings == states.MainMenu:
+		$"MainMenuUI".set_process(false)
+	elif state_behind_settings == states.LevelSelect:
+		$"LevelSelectUI".set_process(false)
+	set_active($"SettingsUI", true)
+
+
+func _on_close_settings_button_pressed() -> void:
+	set_active($"SettingsUI", false)
+	if state_behind_settings == states.MainMenu:
+		$"MainMenuUI".set_process(true)
+	elif state_behind_settings == states.LevelSelect:
+		$"LevelSelectUI".set_process(true)
+
+
+func _on_sfx_bar_mouse_entered() -> void:
+	mouse_on_sfx = true
+
+
+func _on_sfx_bar_mouse_exited() -> void:
+	mouse_on_sfx = false
+
+
+func _on_music_bar_mouse_entered() -> void:
+	mouse_on_music = true
+
+
+func _on_music_bar_mouse_exited() -> void:
+	mouse_on_music = false
+
+
+func sync_sfx_volume(audio_stream_player: AudioStreamPlayer) -> void:
+	audio_stream_player.volume_db = linear_to_db(sfx_volume / 100)

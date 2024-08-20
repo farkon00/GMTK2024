@@ -16,6 +16,7 @@ func explode():
 	emitter.position = position + Vector2.from_angle(rotation) * ($"CollisionShape2D".shape as RectangleShape2D).size.x / 2
 	var audio_player = audio_stream_player.instantiate()
 	$"..".add_child(audio_player)
+	GameManager.instance.sync_sfx_volume(audio_player)
 	audio_player.play()
 
 func _process(delta):

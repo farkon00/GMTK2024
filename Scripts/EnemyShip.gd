@@ -35,6 +35,7 @@ func process_missile_launching(delta: float):
 func die():
 	var audio_player = audio_stream_player.instantiate()
 	$"..".add_child(audio_player)
+	GameManager.instance.sync_sfx_volume(audio_player)
 	audio_player.play()
 	super()
 	GameManager.instance.enemy_ships.erase(self)

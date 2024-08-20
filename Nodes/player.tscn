@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://c61jd7iam04n3" path="res://Textures/Player/player_frames.tres" id="2_7sn85"]
 [ext_resource type="Texture2D" uid="uid://d4b44hojwum0e" path="res://Textures/Laser/laser_red.png" id="3_d3hbm"]
 [ext_resource type="AudioStream" uid="uid://c6sovssx6ow4v" path="res://Sounds/PlayerHit.wav" id="4_qil4l"]
-[ext_resource type="PackedScene" uid="uid://ddwf5i1alnt1g" path="res://Nodes/player_audio_player.tscn" id="5_hw5hm"]
+[ext_resource type="Script" path="res://Scripts/SFXVolumeSetter.gd" id="5_551r4"]
 
 [node name="Player" type="StaticBody2D"]
 position = Vector2(50, 153)
@@ -54,7 +54,6 @@ texture = ExtResource("3_d3hbm")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qil4l")
-
-[node name="player_audio_player" parent="." instance=ExtResource("5_hw5hm")]
+script = ExtResource("5_551r4")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

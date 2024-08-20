@@ -68,6 +68,7 @@ func _input(event):
 		state = states.GoodLuck
 		$"Panel/PlanetsLabel2".visible = false
 		$"Panel/GoodLuck".visible = true
+		$"Panel/ProTip".visible = true
 		$"../Planets/ShowcasePlanet".tutorial_disabled_smaller = true
 		$"../Player".z_index = 0
 		$"../Planets/ShowcasePlanet".z_index = 0

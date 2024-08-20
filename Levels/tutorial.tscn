@@ -42,6 +42,7 @@ offset_right = 1152.0
 offset_bottom = 651.0
 
 [node name="WelcomeLabel" type="Label" parent="TutorialManager/Panel"]
+visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1
@@ -154,7 +155,6 @@ This makes planet smaller."
 horizontal_alignment = 1
 
 [node name="GoodLuck" type="Label" parent="TutorialManager/Panel"]
-visible = false
 z_index = 12
 layout_mode = 1
 anchors_preset = -1
@@ -168,7 +168,25 @@ offset_right = 1019.98
 offset_bottom = 131.638
 theme = ExtResource("5_nsmdf")
 theme_override_font_sizes/font_size = 40
-text = "These are all the basics, good luck."
+text = "These are all the basics, good luck.
+"
+horizontal_alignment = 1
+
+[node name="ProTip" type="Label" parent="TutorialManager/Panel"]
+z_index = 12
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.062
+anchor_right = 0.112
+anchor_bottom = 0.062
+offset_left = -126.024
+offset_top = 6.638
+offset_right = 1019.98
+offset_bottom = 174.638
+theme = ExtResource("5_nsmdf")
+theme_override_font_sizes/font_size = 30
+text = "Pro tip: you can always exit the current level by pressing <Esc>"
 horizontal_alignment = 1
 
 [node name="ContinueLabel" type="Label" parent="TutorialManager/Panel"]

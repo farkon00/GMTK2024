@@ -21,6 +21,8 @@ func _input(event):
     queue_free()
 
 func _process(_delta: float):
+    if GameManager.instance.is_game_stopped:
+        queue_free()
     if !finished:
         GameManager.instance.get_node("TimerUI").visible = false
 
